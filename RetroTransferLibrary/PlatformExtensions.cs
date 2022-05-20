@@ -39,12 +39,13 @@ namespace RetroTransferLibrary
         /// </summary>
         private void initPlatformExtensions()
         {
-            platformExtensions[new List<string> { "gba" }] = "gba";
-            platformExtensions[new List<string> { "gb" }] = "gb";
-            platformExtensions[new List<string> { "gbc" }] = "gbc";
-            platformExtensions[new List<string> { "z64", "n64", "v64" }] = "n64";
-            platformExtensions[new List<string> { "nes" }] = "nes";
-            platformExtensions[new List<string> { "smc", "sfc" }] = "snes";
+            /// Note - consider reading this from a text file somewhere.
+            platformExtensions[new List<string> { ".gba" }] = "gba";
+            platformExtensions[new List<string> { ".gb" }] = "gb";
+            platformExtensions[new List<string> { ".gbc" }] = "gbc";
+            platformExtensions[new List<string> { ".z64", ".n64", ".v64" }] = "n64";
+            platformExtensions[new List<string> { ".nes" }] = "nes";
+            platformExtensions[new List<string> { ".smc", ".sfc" }] = "snes";
         }
     }
 }
