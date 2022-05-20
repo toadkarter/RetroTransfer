@@ -8,22 +8,25 @@ namespace RetroTransferLibrary
         /// <summary>
         /// A name selected by the user for this Raspberry Pi.
         /// </summary>
-        private string name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// The IP address associated with this Raspberry Pi.
         /// </summary>
-        private string ipAddress { get; set; }
+        public string IpAddress { get; set; }
 
         /// <summary>
         /// The username that holds the installation of the Raspberry Pi.
         /// </summary>
-        private string username { get; set; }
+        public string Username { get; set; }
+
+
+        private string _password;
 
         /// <summary>
-        /// The login password for the Raspberry Pi user.
+        /// The login password for the Raspberry Pi. 
         /// </summary>
-        private string password;
+        public string Password { get; set; }
 
         /// <summary>
         /// Constructor for RaspberryPi class.
@@ -34,28 +37,10 @@ namespace RetroTransferLibrary
         /// <param name="password"></param>
         public RaspberryPi(string name, string ipAddress, string username, string password)
         {
-            this.name = name;
-            this.ipAddress = ipAddress;
-            this.username = username;
-            this.password = EncryptPassword(password);
-        }
-
-        /// <summary>
-        /// Getter for the password property, decrypts the password before returning.
-        /// </summary>
-        /// <returns></returns>
-        public string getPassword()
-        {
-            return DecryptPassword(password);
-        }
-
-        /// <summary>
-        /// Setter for the password property, encrypts the password before setting.
-        /// </summary>
-        /// <param name="password"></param>
-        public void setPassword(string password)
-        {
-            this.password = EncryptPassword(password);
+            Name = name;
+            IpAddress = ipAddress;
+            Username = username;
+            Password = password;
         }
 
         /// <summary>
