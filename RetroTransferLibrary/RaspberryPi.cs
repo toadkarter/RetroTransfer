@@ -1,0 +1,83 @@
+﻿using System;
+using System.Text;
+
+namespace RetroTransferLibrary
+{
+    public class RaspberryPi
+    {
+        /// <summary>
+        /// A name selected by the user for this Raspberry Pi.
+        /// </summary>
+        private string name { get; set; }
+
+        /// <summary>
+        /// The IP address associated with this Raspberry Pi.
+        /// </summary>
+        private string ipAddress { get; set; }
+
+        /// <summary>
+        /// The username that holds the installation of the Raspberry Pi.
+        /// </summary>
+        private string username { get; set; }
+
+        /// <summary>
+        /// The login password for the Raspberry Pi user.
+        /// </summary>
+        private string password;
+
+        /// <summary>
+        /// Constructor for RaspberryPi class.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="ipAddress"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        public RaspberryPi(string name, string ipAddress, string username, string password)
+        {
+            this.name = name;
+            this.ipAddress = ipAddress;
+            this.username = username;
+            this.password = EncryptPassword(password);
+        }
+
+        /// <summary>
+        /// Getter for the password property, decrypts the password before returning.
+        /// </summary>
+        /// <returns></returns>
+        public string getPassword()
+        {
+            return DecryptPassword(password);
+        }
+
+        /// <summary>
+        /// Setter for the password property, encrypts the password before setting.
+        /// </summary>
+        /// <param name="password"></param>
+        public void setPassword(string password)
+        {
+            this.password = EncryptPassword(password);
+        }
+
+        /// <summary>
+        /// Takes in an unencrypted password encrypts it using the Encoding C# library.
+        /// </summary>
+        /// <param name="unencryptedPassword"></param>
+        /// <returns></returns>
+        private string EncryptPassword(string unencryptedPassword)
+        {
+            byte[] passwordInEncryptedBytes = Encoding.UTF8.GetBytes(unencryptedPassword);
+            return Convert.ToBase64String(passwordInEncryptedBytes);
+        }
+
+        /// <summary>
+        /// Takes in a password encrypted using the EncryptPassword method and decrypts it.
+        /// </summary>
+        /// <param name="encryptedPassword"></param>
+        /// <returns></returns>
+        private string DecryptPassword(string encryptedPassword)
+        {
+            byte[] passwordInEncryptedBytes = Convert.FromBase64String(encryptedPassword);
+            return Encoding.UTF8.GetString(passwordInEncryptedBytes);
+        }
+    }
+}

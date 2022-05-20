@@ -37,5 +37,15 @@ namespace RetroTransferUI
             ScpConnector scp = new ScpConnector();
             scp.SendFile(filePath[0]);
         }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
