@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using RetroTransferLibrary;
 
 namespace RetroTransferUI
 {
@@ -33,6 +34,8 @@ namespace RetroTransferUI
         {
             string[] filePath = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             listBox1.Items.Add(filePath[0]);
+            ScpConnector scp = new ScpConnector();
+            scp.SendFile(filePath[0]);
         }
     }
 }
