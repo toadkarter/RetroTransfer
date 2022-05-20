@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Y38KHiDs2P3ANLA8G0G7fP9wIvh8JMLfPVWIAOl27OWEbw7jQCG3lH4c71CCM1EO1YkG8lUKMKxwgZMj7/fS3g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Vlad\\github\\RetroTransfer\\RetroTransferLibrary\\RetroTransferLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Vlad\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

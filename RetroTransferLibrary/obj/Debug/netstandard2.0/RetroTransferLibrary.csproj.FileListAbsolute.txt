@@ -1,0 +1,9 @@
+C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\bin\Debug\netstandard2.0\RetroTransferLibrary.deps.json
+C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\bin\Debug\netstandard2.0\RetroTransferLibrary.dll
+C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\bin\Debug\netstandard2.0\RetroTransferLibrary.pdb
+C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\obj\Debug\netstandard2.0\RetroTransferLibrary.csprojAssemblyReference.cache
+C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\obj\Debug\netstandard2.0\RetroTransferLibrary.AssemblyInfoInputs.cache
+C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\obj\Debug\netstandard2.0\RetroTransferLibrary.AssemblyInfo.cs
+C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\obj\Debug\netstandard2.0\RetroTransferLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\obj\Debug\netstandard2.0\RetroTransferLibrary.dll
+C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\obj\Debug\netstandard2.0\RetroTransferLibrary.pdb
