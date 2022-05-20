@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RetroTransferLibrary;
+using System.Diagnostics;
 
 namespace RetroTransferUI
 {
@@ -18,15 +18,21 @@ namespace RetroTransferUI
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void helloWorld_Click(object sender, EventArgs e)
+        private void listBox1_DragEnter(object sender, DragEventArgs e)
         {
-            ScpConnector ssh = new ScpConnector();
-            ssh.SendFile("fileName.txt");
+            e.Effect = DragDropEffects.All;
+
+        }
+
+        private void listBox1_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] filePath = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            listBox1.Items.Add(filePath[0]);
         }
     }
 }

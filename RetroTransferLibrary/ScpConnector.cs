@@ -10,6 +10,7 @@ namespace RetroTransferLibrary
     {
         // TODO - Add filepath
         // TODO - Add credentials list
+        // TODO - Add password encryption https://stackoverflow.com/questions/1678555/password-encryption-decryption-code-in-net
         public void SendFile(String fileName)
         {
             ScpClient scp = new ScpClient("ipaddress", "pi", "password");
