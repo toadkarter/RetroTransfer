@@ -6,3 +6,6 @@ C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\obj\Debug\netstandard2.0
 C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\obj\Debug\netstandard2.0\RetroTransferLibrary.AssemblyInfo.cs
 C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\obj\Debug\netstandard2.0\RetroTransferLibrary.dll
 C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\obj\Debug\netstandard2.0\RetroTransferLibrary.pdb
+C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\obj\Debug\netstandard2.0\RetroTransferLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\obj\Debug\netstandard2.0\RetroTransferLibrary.Resources.config.resources
+C:\Users\Vlad\github\RetroTransfer\RetroTransferLibrary\obj\Debug\netstandard2.0\RetroTransferLibrary.csproj.GenerateResource.cache

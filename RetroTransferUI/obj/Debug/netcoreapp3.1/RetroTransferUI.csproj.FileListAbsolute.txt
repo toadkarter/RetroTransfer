@@ -16,3 +16,5 @@ C:\Users\Vlad\github\RetroTransfer\RetroTransferUI\obj\Debug\netcoreapp3.1\Retro
 C:\Users\Vlad\github\RetroTransfer\RetroTransferUI\obj\Debug\netcoreapp3.1\RetroTransferUI.dll
 C:\Users\Vlad\github\RetroTransfer\RetroTransferUI\obj\Debug\netcoreapp3.1\RetroTransferUI.pdb
 C:\Users\Vlad\github\RetroTransfer\RetroTransferUI\obj\Debug\netcoreapp3.1\RetroTransferUI.genruntimeconfig.cache
+C:\Users\Vlad\github\RetroTransfer\RetroTransferUI\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
+C:\Users\Vlad\github\RetroTransfer\RetroTransferUI\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll

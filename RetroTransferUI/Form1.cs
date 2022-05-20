@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RetroTransferLibrary;
 
 namespace RetroTransferUI
 {
@@ -24,7 +25,8 @@ namespace RetroTransferUI
 
         private void helloWorld_Click(object sender, EventArgs e)
         {
-
+            ScpConnector ssh = new ScpConnector();
+            ssh.SendFile("fileName.txt");
         }
     }
 }
