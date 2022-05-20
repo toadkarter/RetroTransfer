@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RetroTransferLibrary;
 
 namespace RetroTransferUI
 {
@@ -25,8 +24,7 @@ namespace RetroTransferUI
 
         private void helloWorld_Click(object sender, EventArgs e)
         {
-            Class1 button = new Class1();
-            button.HelloWorld();
+
         }
     }
 }

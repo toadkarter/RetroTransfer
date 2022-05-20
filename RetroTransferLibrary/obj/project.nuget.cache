@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Y38KHiDs2P3ANLA8G0G7fP9wIvh8JMLfPVWIAOl27OWEbw7jQCG3lH4c71CCM1EO1YkG8lUKMKxwgZMj7/fS3g==",
+  "dgSpecHash": "pQMF7nOL03Q+TGVjp0TeCKz+VysT2ECipg6Ck5rDmJCKpBn2hqzn9Vy+Ylzthp9PzcpvW8lDs/vAg5Me6nNcxQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Vlad\\github\\RetroTransfer\\RetroTransferLibrary\\RetroTransferLibrary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\Vlad\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\Vlad\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Vlad\\.nuget\\packages\\ssh.net\\2020.0.1\\ssh.net.2020.0.1.nupkg.sha512",
+    "C:\\Users\\Vlad\\.nuget\\packages\\sshnet.security.cryptography\\1.3.0\\sshnet.security.cryptography.1.3.0.nupkg.sha512"
   ],
   "logs": []
 }
