@@ -13,7 +13,12 @@ namespace RetroTransferLibrary
         /// </summary>
         public PlatformExtensions()
         {
-            initPlatformExtensions();
+            platformExtensions[new List<string> { ".gba" }] = "gba";
+            platformExtensions[new List<string> { ".gb" }] = "gb";
+            platformExtensions[new List<string> { ".gbc" }] = "gbc";
+            platformExtensions[new List<string> { ".z64", ".n64", ".v64" }] = "n64";
+            platformExtensions[new List<string> { ".nes" }] = "nes";
+            platformExtensions[new List<string> { ".smc", ".sfc" }] = "snes";
         }
 
         /// <summary>
@@ -32,20 +37,6 @@ namespace RetroTransferLibrary
                 }
             }
             return "";
-        }
-
-        /// <summary>
-        /// Sets up dictionary of key value pairs, where the keys are a list of possible extensions and the value is the platform.
-        /// </summary>
-        private void initPlatformExtensions()
-        {
-            /// Note - consider reading this from a text file somewhere.
-            platformExtensions[new List<string> { ".gba" }] = "gba";
-            platformExtensions[new List<string> { ".gb" }] = "gb";
-            platformExtensions[new List<string> { ".gbc" }] = "gbc";
-            platformExtensions[new List<string> { ".z64", ".n64", ".v64" }] = "n64";
-            platformExtensions[new List<string> { ".nes" }] = "nes";
-            platformExtensions[new List<string> { ".smc", ".sfc" }] = "snes";
         }
     }
 }
