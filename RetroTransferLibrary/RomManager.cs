@@ -7,6 +7,7 @@ namespace RetroTransferLibrary
     public class RomManager
     {
         public List<Rom> CurrentRoms { get; private set; }
+        public event EventHandler<Rom> AddRomEvent;
 
         public RomManager()
         {
@@ -17,6 +18,7 @@ namespace RetroTransferLibrary
         {
             Rom currentRom = new Rom(localPath);
             CurrentRoms.Add(currentRom);
+            AddRomEvent?.Invoke(this, currentRom);
         }
 
         public void deleteRom(string fileName)

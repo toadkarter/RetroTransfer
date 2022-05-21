@@ -20,6 +20,12 @@ namespace RetroTransferUI
         public Form1()
         {
             InitializeComponent();
+            romManager.AddRomEvent += RomManager_AddRomEvent; ;
+        }
+
+        private void RomManager_AddRomEvent(object sender, Rom e)
+        {
+            listBox2.Items.Add(e.DestinationPath);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -37,11 +43,8 @@ namespace RetroTransferUI
             string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             foreach (string filePath in filePaths)
             {
-                Rom currentRom = new Rom(filePath);
-                listBox2.Items.Add(currentRom.DestinationPath);
+                romManager.addRom(filePath);
             }
-
-
             // listBox1.Items.Add(filePath[0]);
             // ScpConnector scp = new ScpConnector();
             // scp.SendFile(filePath[0]);
