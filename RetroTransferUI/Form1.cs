@@ -32,15 +32,10 @@ namespace RetroTransferUI
 
         private void listBox1_DragDrop(object sender, DragEventArgs e)
         {
-            string[] filePath = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            listBox1.Items.Add(filePath[0]);
-            ScpConnector scp = new ScpConnector();
-            scp.SendFile(filePath[0]);
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            // string[] filePath = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            // listBox1.Items.Add(filePath[0]);
+            // ScpConnector scp = new ScpConnector();
+            // scp.SendFile(filePath[0]);
         }
 
         private void Form1_Load(object sender, EventArgs e)

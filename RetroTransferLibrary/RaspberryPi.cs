@@ -21,8 +21,6 @@ namespace RetroTransferLibrary
         public string Username { get; set; }
 
 
-        private string _password;
-
         /// <summary>
         /// The login password for the Raspberry Pi. 
         /// </summary>

@@ -10,7 +10,7 @@ namespace RetroTransferLibrary
         /// <summary>
         /// File path of where the ROM is located on the user's computer.
         /// </summary>
-        public string LocalPath { get; set; }
+        public string LocalPath { get; private set; }
 
         /// <summary>
         /// Platform to which the ROM belongs.
@@ -20,9 +20,9 @@ namespace RetroTransferLibrary
         /// <summary>
         /// File path showing where in the RetroPie directory the rom should be placed.
         /// </summary>
-        public string DestinationPath { get { return $"/roms/{platform}/{fileName}{extension}"; } }
+        public string DestinationPath { get { return $"/roms/{platform}/{FileName}{extension}"; } }
 
-        private string fileName;
+        public string FileName { get; private set; }
         private string extension;
         private string platform;
 
@@ -35,7 +35,7 @@ namespace RetroTransferLibrary
         public Rom (string localPath)
         {
             LocalPath = localPath;
-            fileName = Path.GetFileName(LocalPath);
+            FileName = Path.GetFileName(LocalPath);
             extension = Path.GetExtension(LocalPath);
             Platform = platformExtensions.GetPlatform(extension);
         }
