@@ -20,11 +20,9 @@ namespace RetroTransferLibrary
         /// <summary>
         /// File path showing where in the RetroPie directory the rom should be placed.
         /// </summary>
-        public string DestinationPath { get { return $"/roms/{platform}/{FileName}{extension}"; } }
+        public string DestinationPath { get { return $"/roms/{Platform}/{FileName}"; } }
 
         public string FileName { get; private set; }
-        private string extension;
-        private string platform;
 
         private PlatformExtensions platformExtensions = new PlatformExtensions();
 
@@ -36,7 +34,8 @@ namespace RetroTransferLibrary
         {
             LocalPath = localPath;
             FileName = Path.GetFileName(LocalPath);
-            extension = Path.GetExtension(LocalPath);
+
+            string extension = Path.GetExtension(LocalPath);
             Platform = platformExtensions.GetPlatform(extension);
         }
     }

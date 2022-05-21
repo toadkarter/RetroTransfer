@@ -47,10 +47,11 @@
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(486, 60);
+            this.listBox2.Location = new System.Drawing.Point(392, 60);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(261, 277);
+            this.listBox2.Size = new System.Drawing.Size(396, 277);
             this.listBox2.TabIndex = 3;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
             // Form1
             // 
