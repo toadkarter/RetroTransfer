@@ -20,6 +20,8 @@ namespace RetroTransferLibrary
         /// </summary>
         public string Username { get; set; }
 
+        public string RetroPieDirectory { get; set; }
+
 
         /// <summary>
         /// The login password for the Raspberry Pi. 
@@ -33,13 +35,19 @@ namespace RetroTransferLibrary
         /// <param name="ipAddress"></param>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        public RaspberryPi(string name, string ipAddress, string username, string password)
+        public RaspberryPi(string name, string ipAddress, string username, string password, string retroPieDirectory)
         {
             Name = name;
             IpAddress = ipAddress;
             Username = username;
             Password = password;
+            RetroPieDirectory = retroPieDirectory;
         }
+
+
+
+
+
 
         /// <summary>
         /// Takes in an unencrypted password encrypts it using the Encoding C# library.

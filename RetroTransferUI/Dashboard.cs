@@ -14,6 +14,7 @@ namespace RetroTransferUI
 {
     public partial class Dashboard : Form
     {
+        public RaspberryPi raspberryPi;
 
         private ScpConnector scp = new ScpConnector();
 

@@ -26,5 +26,18 @@ namespace RetroTransferUI
         {
             Close();
         }
+
+        private void usernameField_TextChanged(object sender, EventArgs e)
+        {
+            TextBox currentTextBox = sender as TextBox;
+
+            if (currentTextBox.Text == "")
+            {
+                retropieDirectoryField.Text = "";
+            } else
+            {
+                retropieDirectoryField.Text = $"/home/{currentTextBox.Text}/retropie";
+            }
+        }
     }
 }
