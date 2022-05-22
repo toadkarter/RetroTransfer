@@ -6,6 +6,7 @@ namespace RetroTransferLibrary
 {
     public class PlatformExtensions
     {
+        // This is ugly as sin, figure out a way to read this in from an enum or something.
 
         private Dictionary<List<string>, string> platformExtensions = new Dictionary<List<string>, string>();
 

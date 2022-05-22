@@ -25,15 +25,12 @@ namespace RetroTransferUI
             {
                 platformExtensions.Items.Add(platform);
             }
-
             platformExtensions.SelectedItem = CurrentRom.Platform;
-
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            CurrentRom.Platform = platformExtensions.SelectedItem.ToString();
         }
 
         private void label1_Click(object sender, EventArgs e)

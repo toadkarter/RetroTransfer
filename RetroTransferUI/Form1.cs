@@ -15,7 +15,6 @@ namespace RetroTransferUI
     public partial class Form1 : Form
     {
 
-        private RomManager romManager = new RomManager();
         private ScpConnector scp = new ScpConnector();
 
         public Form1()
@@ -45,7 +44,6 @@ namespace RetroTransferUI
             string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             foreach (string filePath in filePaths)
             {
-                romManager.addRom(filePath);
                 flowLayoutPanel1.Controls.Add(new RomDisplay(filePath));
             }
             // listBox1.Items.Add(filePath[0]);
