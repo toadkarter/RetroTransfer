@@ -11,6 +11,7 @@ using RetroTransferLibrary;
 
 namespace RetroTransferUI
 {
+    // TODO - Disable editing in the dropdown
     public partial class RomDisplay : UserControl
     {
         public Rom CurrentRom { get; private set; }
@@ -36,6 +37,11 @@ namespace RetroTransferUI
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            Parent.Controls.Remove(this);
         }
     }
 }

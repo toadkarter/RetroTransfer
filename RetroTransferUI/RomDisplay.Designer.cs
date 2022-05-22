@@ -35,12 +35,13 @@
             // 
             // romName
             // 
-            this.romName.AutoSize = true;
+            this.romName.AutoEllipsis = true;
             this.romName.Location = new System.Drawing.Point(17, 21);
             this.romName.Name = "romName";
-            this.romName.Size = new System.Drawing.Size(35, 13);
+            this.romName.Size = new System.Drawing.Size(186, 13);
             this.romName.TabIndex = 0;
             this.romName.Text = "label1";
+            this.romName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.romName.Click += new System.EventHandler(this.label1_Click);
             // 
             // platformExtensions
@@ -60,6 +61,7 @@
             this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "X";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // RomDisplay
             // 
@@ -72,7 +74,6 @@
             this.Name = "RomDisplay";
             this.Size = new System.Drawing.Size(381, 57);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
