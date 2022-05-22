@@ -12,12 +12,12 @@ using RetroTransferLibrary;
 
 namespace RetroTransferUI
 {
-    public partial class Form1 : Form
+    public partial class Dashboard : Form
     {
 
         private ScpConnector scp = new ScpConnector();
 
-        public Form1()
+        public Dashboard()
         {
             InitializeComponent();
             //romManager.AddRomEvent += RomManager_AddRomEvent; ;
@@ -29,17 +29,17 @@ namespace RetroTransferUI
         //    flowLayoutPanel1.Controls.Add(new RomDisplay(e));
         //}
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void romDropCollector_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void listBox1_DragEnter(object sender, DragEventArgs e)
+        private void romDropCollector_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
         }
 
-        private void listBox1_DragDrop(object sender, DragEventArgs e)
+        private void romDropCollector_DragDrop(object sender, DragEventArgs e)
         {
             string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             foreach (string filePath in filePaths)
@@ -78,6 +78,19 @@ namespace RetroTransferUI
             scp.SendRom(romsToSend, "/home/pi/retropie");
 
             flowLayoutPanel1.Controls.Clear();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            Color borderColor = Color.Gray;
+            int borderThickness = 2;
+            ButtonBorderStyle borderStyle = ButtonBorderStyle.Dashed;
+
+            ControlPaint.DrawBorder(e.Graphics, romDropCollector.ClientRectangle,
+                borderColor, borderThickness, borderStyle,
+                borderColor, borderThickness, borderStyle,
+                borderColor, borderThickness, borderStyle,
+                borderColor, borderThickness, borderStyle) ;
         }
     }
 }

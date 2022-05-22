@@ -28,21 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.romName = new System.Windows.Forms.Label();
             this.platformExtensions = new System.Windows.Forms.ComboBox();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.romName = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // romName
-            // 
-            this.romName.AutoEllipsis = true;
-            this.romName.Location = new System.Drawing.Point(17, 21);
-            this.romName.Name = "romName";
-            this.romName.Size = new System.Drawing.Size(186, 13);
-            this.romName.TabIndex = 0;
-            this.romName.Text = "label1";
-            this.romName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.romName.Click += new System.EventHandler(this.label1_Click);
             // 
             // platformExtensions
             // 
@@ -63,14 +52,28 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // romName
+            // 
+            this.romName.AutoEllipsis = true;
+            this.romName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.romName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
+            this.romName.Location = new System.Drawing.Point(13, 18);
+            this.romName.Margin = new System.Windows.Forms.Padding(3);
+            this.romName.Name = "romName";
+            this.romName.Size = new System.Drawing.Size(200, 23);
+            this.romName.TabIndex = 8;
+            this.romName.Text = "ROM FILE NAME";
+            this.romName.Click += new System.EventHandler(this.label2_Click);
+            // 
             // RomDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(231)))), ((int)(((byte)(190)))));
+            this.Controls.Add(this.romName);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.platformExtensions);
-            this.Controls.Add(this.romName);
             this.Name = "RomDisplay";
             this.Size = new System.Drawing.Size(381, 57);
             this.ResumeLayout(false);
@@ -78,9 +81,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label romName;
         private System.Windows.Forms.ComboBox platformExtensions;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Label romName;
     }
 }
