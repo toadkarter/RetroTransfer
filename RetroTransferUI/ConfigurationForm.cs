@@ -61,6 +61,14 @@ namespace RetroTransferUI
             return new RaspberryPi(ipAddress, username, password, retroPieDirectory);
         }
 
+        public void UpdateConfigurationFields(RaspberryPi raspberryPi)
+        {
+            ipAddressField.Text = raspberryPi.IpAddress;
+            usernameField.Text = raspberryPi.Username;
+            passwordField.Text = raspberryPi.Password;
+            retropieDirectoryField.Text = raspberryPi.RetroPieDirectory;
+        }
+
         private void raspberryPiConfigTitleText_Click(object sender, EventArgs e)
         {
 
