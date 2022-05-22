@@ -82,7 +82,7 @@ namespace RetroTransferUI
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            Color borderColor = Color.Gray;
+            Color borderColor = Color.White;
             int borderThickness = 2;
             ButtonBorderStyle borderStyle = ButtonBorderStyle.Dashed;
 
@@ -91,6 +91,17 @@ namespace RetroTransferUI
                 borderColor, borderThickness, borderStyle,
                 borderColor, borderThickness, borderStyle,
                 borderColor, borderThickness, borderStyle) ;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void configButton_Click(object sender, EventArgs e)
+        {
+            RaspberryPiConfig raspberryPiConfig = new RaspberryPiConfig();
+            raspberryPiConfig.Show();
         }
     }
 }

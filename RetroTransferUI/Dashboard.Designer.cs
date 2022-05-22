@@ -33,6 +33,7 @@
             this.romDropCollector = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.configButton = new System.Windows.Forms.Button();
             this.romDropCollector.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,9 +63,9 @@
             this.romDropCollector.AllowDrop = true;
             this.romDropCollector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
             this.romDropCollector.Controls.Add(this.label2);
-            this.romDropCollector.Location = new System.Drawing.Point(39, 50);
+            this.romDropCollector.Location = new System.Drawing.Point(50, 81);
             this.romDropCollector.Name = "romDropCollector";
-            this.romDropCollector.Size = new System.Drawing.Size(253, 237);
+            this.romDropCollector.Size = new System.Drawing.Size(250, 128);
             this.romDropCollector.TabIndex = 6;
             this.romDropCollector.DragDrop += new System.Windows.Forms.DragEventHandler(this.romDropCollector_DragDrop);
             this.romDropCollector.DragEnter += new System.Windows.Forms.DragEventHandler(this.romDropCollector_DragEnter);
@@ -73,24 +74,35 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
-            this.label2.Location = new System.Drawing.Point(20, 104);
+            this.label2.Location = new System.Drawing.Point(20, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(211, 28);
+            this.label2.Size = new System.Drawing.Size(206, 24);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Drag ROMS Here";
+            this.label2.Text = "- Drag ROMS Here -";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
-            this.label1.Location = new System.Drawing.Point(322, 50);
+            this.label1.Location = new System.Drawing.Point(409, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(238, 28);
             this.label1.TabIndex = 8;
             this.label1.Text = "Currently Selected:";
+            // 
+            // configButton
+            // 
+            this.configButton.Location = new System.Drawing.Point(95, 227);
+            this.configButton.Name = "configButton";
+            this.configButton.Size = new System.Drawing.Size(153, 60);
+            this.configButton.TabIndex = 9;
+            this.configButton.Text = "Raspberry Pi Configuration";
+            this.configButton.UseVisualStyleBackColor = true;
+            this.configButton.Click += new System.EventHandler(this.configButton_Click);
             // 
             // Dashboard
             // 
@@ -98,6 +110,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
             this.ClientSize = new System.Drawing.Size(853, 461);
+            this.Controls.Add(this.configButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.romDropCollector);
             this.Controls.Add(this.button1);
@@ -118,6 +131,7 @@
         private System.Windows.Forms.Panel romDropCollector;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button configButton;
     }
 }
 

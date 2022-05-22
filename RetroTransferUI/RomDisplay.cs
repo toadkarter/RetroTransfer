@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RetroTransferLibrary;
+using System;
 using System.Windows.Forms;
-using RetroTransferLibrary;
 
 namespace RetroTransferUI
 {
@@ -24,22 +17,22 @@ namespace RetroTransferUI
             romName.Text = CurrentRom.FileName;
             foreach (string platform in platforms.GetPlatforms()) 
             {
-                platformExtensions.Items.Add(platform);
+                platformsList.Items.Add(platform);
             }
-            platformExtensions.SelectedItem = CurrentRom.Platform;
+            platformsList.SelectedItem = CurrentRom.Platform;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void PlatformList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CurrentRom.Platform = platformExtensions.SelectedItem.ToString();
+            CurrentRom.Platform = platformsList.SelectedItem.ToString();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void deleteButton_Click(object sender, EventArgs e)
+        private void DeleteButton_Click(object sender, EventArgs e)
         {
             Parent.Controls.Remove(this);
         }
