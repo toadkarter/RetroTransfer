@@ -150,6 +150,7 @@
             this.raspberryPiConfigTitleText.Size = new System.Drawing.Size(400, 33);
             this.raspberryPiConfigTitleText.TabIndex = 17;
             this.raspberryPiConfigTitleText.Text = "Raspberry Pi Configuration";
+            this.raspberryPiConfigTitleText.Click += new System.EventHandler(this.raspberryPiConfigTitleText_Click);
             // 
             // RaspberryPiConfig
             // 

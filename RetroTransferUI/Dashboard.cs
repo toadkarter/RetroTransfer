@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using RetroTransferLibrary;
+using System.IO;
 
 namespace RetroTransferUI
 {
@@ -17,11 +18,20 @@ namespace RetroTransferUI
         private RaspberryPi raspberryPi;
         private RaspberryPiConfig raspberryPiConfig = new RaspberryPiConfig();
         private ScpConnector scp = new ScpConnector();
+        private Configuration config = new Configuration();
 
         public Dashboard()
         {
             InitializeComponent();
             InitializeRaspberryPiText();
+
+            if (config.ConfigFileExists())
+            {
+
+            }
+            
+            
+            
             raspberryPiConfig.RaiseConfigEvent += RaspberryPiConfig_ConfigEvent;
         }
 
@@ -35,12 +45,15 @@ namespace RetroTransferUI
         {
             raspberryPi = e;
             InitializeRaspberryPiText();
+            flowLayoutPanel1.Controls.Clear();
         }
 
+        // Note to self: Is it safer to include the Raspberry Pi as the parameter?
         private void InitializeRaspberryPiText()
         {
             if (raspberryPi == null)
             {
+                // Show alert saying that the Raspberry Pi hasn't been configured properly
 
             }
             else
@@ -87,17 +100,17 @@ namespace RetroTransferUI
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void sendButton_Click(object sender, EventArgs e)
         {
-
             List<Rom> romsToSend = new List<Rom>();
+
             foreach (RomDisplay romDisplay in flowLayoutPanel1.Controls)
             {
                 romsToSend.Add(romDisplay.CurrentRom);
             }
 
-            scp.SendRom(romsToSend, "/home/pi/retropie");
-
+            scp.SendRom(raspberryPi, romsToSend);
+            Debug.Write("Sent all the roms");
             flowLayoutPanel1.Controls.Clear();
         }
 
@@ -127,6 +140,15 @@ namespace RetroTransferUI
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (raspberryPi != null)
+            {
+                config.WriteToConfig(raspberryPi);
+            }
         }
     }
 }

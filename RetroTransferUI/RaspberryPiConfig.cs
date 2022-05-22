@@ -55,10 +55,15 @@ namespace RetroTransferUI
         {
             string ipAddress = ipAddressField.Text;
             string username= usernameField.Text;
-            string password = usernameField.Text;
+            string password = passwordField.Text;
             string retroPieDirectory = retropieDirectoryField.Text;
 
             return new RaspberryPi(ipAddress, username, password, retroPieDirectory);
+        }
+
+        private void raspberryPiConfigTitleText_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

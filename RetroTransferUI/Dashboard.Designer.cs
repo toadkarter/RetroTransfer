@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.sendButton = new System.Windows.Forms.Button();
             this.romDropCollector = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,15 +49,15 @@
             this.flowLayoutPanel1.TabIndex = 4;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
-            // button1
+            // sendButton
             // 
-            this.button1.Location = new System.Drawing.Point(317, 412);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "send";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.sendButton.Location = new System.Drawing.Point(442, 385);
+            this.sendButton.Name = "sendButton";
+            this.sendButton.Size = new System.Drawing.Size(147, 41);
+            this.sendButton.TabIndex = 5;
+            this.sendButton.Text = "Send!";
+            this.sendButton.UseVisualStyleBackColor = true;
+            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
             // romDropCollector
             // 
@@ -77,7 +77,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
-            this.label2.Location = new System.Drawing.Point(20, 49);
+            this.label2.Location = new System.Drawing.Point(19, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(206, 24);
             this.label2.TabIndex = 7;
@@ -97,7 +97,7 @@
             // 
             // configButton
             // 
-            this.configButton.Location = new System.Drawing.Point(95, 300);
+            this.configButton.Location = new System.Drawing.Point(101, 300);
             this.configButton.Name = "configButton";
             this.configButton.Size = new System.Drawing.Size(153, 60);
             this.configButton.TabIndex = 9;
@@ -110,11 +110,11 @@
             this.raspberryPiDetailsText.AutoSize = true;
             this.raspberryPiDetailsText.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.raspberryPiDetailsText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
-            this.raspberryPiDetailsText.Location = new System.Drawing.Point(184, 48);
+            this.raspberryPiDetailsText.Location = new System.Drawing.Point(55, 48);
             this.raspberryPiDetailsText.Name = "raspberryPiDetailsText";
-            this.raspberryPiDetailsText.Size = new System.Drawing.Size(419, 28);
+            this.raspberryPiDetailsText.Size = new System.Drawing.Size(720, 28);
             this.raspberryPiDetailsText.TabIndex = 10;
-            this.raspberryPiDetailsText.Text = "RASPBERRY PI NOT CONFIGURED";
+            this.raspberryPiDetailsText.Text = "PLEASE CONFIGURE RASPBERRY PI BEFORE PROCEEDING";
             this.raspberryPiDetailsText.Click += new System.EventHandler(this.label3_Click);
             // 
             // Dashboard
@@ -127,10 +127,11 @@
             this.Controls.Add(this.configButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.romDropCollector);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.sendButton);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "Dashboard";
             this.Text = "RetroTransfer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.romDropCollector.ResumeLayout(false);
             this.romDropCollector.PerformLayout();
@@ -141,7 +142,7 @@
 
         #endregion
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button sendButton;
         private System.Windows.Forms.Panel romDropCollector;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
