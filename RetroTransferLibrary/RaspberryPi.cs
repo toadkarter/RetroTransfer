@@ -5,10 +5,6 @@ namespace RetroTransferLibrary
 {
     public class RaspberryPi
     {
-        /// <summary>
-        /// A name selected by the user for this Raspberry Pi.
-        /// </summary>
-        public string Name { get; set; }
 
         /// <summary>
         /// The IP address associated with this Raspberry Pi.
@@ -35,19 +31,13 @@ namespace RetroTransferLibrary
         /// <param name="ipAddress"></param>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        public RaspberryPi(string name, string ipAddress, string username, string password, string retroPieDirectory)
+        public RaspberryPi(string ipAddress, string username, string password, string retroPieDirectory)
         {
-            Name = name;
             IpAddress = ipAddress;
             Username = username;
             Password = password;
             RetroPieDirectory = retroPieDirectory;
         }
-
-
-
-
-
 
         /// <summary>
         /// Takes in an unencrypted password encrypts it using the Encoding C# library.

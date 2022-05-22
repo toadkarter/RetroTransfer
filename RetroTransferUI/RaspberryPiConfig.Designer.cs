@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.nameField = new System.Windows.Forms.TextBox();
+            this.ipAddressField = new System.Windows.Forms.TextBox();
             this.hostNameLabel = new System.Windows.Forms.Label();
             this.userNameLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.usernameField = new System.Windows.Forms.TextBox();
             this.passwordField = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.saveAndReturnButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.retropieDirectoryField = new System.Windows.Forms.TextBox();
             this.raspberryPiConfigTitleText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // nameField
+            // ipAddressField
             // 
-            this.nameField.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(231)))), ((int)(((byte)(190)))));
-            this.nameField.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameField.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
-            this.nameField.Location = new System.Drawing.Point(188, 93);
-            this.nameField.Name = "nameField";
-            this.nameField.Size = new System.Drawing.Size(186, 32);
-            this.nameField.TabIndex = 0;
-            this.nameField.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ipAddressField.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(231)))), ((int)(((byte)(190)))));
+            this.ipAddressField.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipAddressField.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
+            this.ipAddressField.Location = new System.Drawing.Point(188, 93);
+            this.ipAddressField.Name = "ipAddressField";
+            this.ipAddressField.Size = new System.Drawing.Size(186, 32);
+            this.ipAddressField.TabIndex = 0;
+            this.ipAddressField.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // hostNameLabel
             // 
@@ -108,15 +108,15 @@
             this.passwordField.TabIndex = 13;
             this.passwordField.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button1
+            // saveAndReturnButton
             // 
-            this.button1.Location = new System.Drawing.Point(150, 349);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 38);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Save and Return";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.saveAndReturnButton.Location = new System.Drawing.Point(150, 349);
+            this.saveAndReturnButton.Name = "saveAndReturnButton";
+            this.saveAndReturnButton.Size = new System.Drawing.Size(110, 38);
+            this.saveAndReturnButton.TabIndex = 14;
+            this.saveAndReturnButton.Text = "Save and Return";
+            this.saveAndReturnButton.UseVisualStyleBackColor = true;
+            this.saveAndReturnButton.Click += new System.EventHandler(this.saveAndReturnButton_Click);
             // 
             // label4
             // 
@@ -160,13 +160,13 @@
             this.Controls.Add(this.raspberryPiConfigTitleText);
             this.Controls.Add(this.retropieDirectoryField);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.saveAndReturnButton);
             this.Controls.Add(this.passwordField);
             this.Controls.Add(this.usernameField);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.userNameLabel);
             this.Controls.Add(this.hostNameLabel);
-            this.Controls.Add(this.nameField);
+            this.Controls.Add(this.ipAddressField);
             this.Name = "RaspberryPiConfig";
             this.Text = "Configuration";
             this.ResumeLayout(false);
@@ -176,13 +176,13 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox nameField;
+        private System.Windows.Forms.TextBox ipAddressField;
         private System.Windows.Forms.Label hostNameLabel;
         private System.Windows.Forms.Label userNameLabel;
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.TextBox usernameField;
         private System.Windows.Forms.TextBox passwordField;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button saveAndReturnButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox retropieDirectoryField;
         private System.Windows.Forms.Label raspberryPiConfigTitleText;

@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.configButton = new System.Windows.Forms.Button();
+            this.raspberryPiDetailsText = new System.Windows.Forms.Label();
             this.romDropCollector.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(327, 81);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(327, 154);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(419, 206);
             this.flowLayoutPanel1.TabIndex = 4;
@@ -50,7 +51,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(346, 377);
+            this.button1.Location = new System.Drawing.Point(317, 412);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -63,7 +64,7 @@
             this.romDropCollector.AllowDrop = true;
             this.romDropCollector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
             this.romDropCollector.Controls.Add(this.label2);
-            this.romDropCollector.Location = new System.Drawing.Point(50, 81);
+            this.romDropCollector.Location = new System.Drawing.Point(50, 154);
             this.romDropCollector.Name = "romDropCollector";
             this.romDropCollector.Size = new System.Drawing.Size(250, 128);
             this.romDropCollector.TabIndex = 6;
@@ -88,7 +89,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
-            this.label1.Location = new System.Drawing.Point(409, 50);
+            this.label1.Location = new System.Drawing.Point(409, 123);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(238, 28);
             this.label1.TabIndex = 8;
@@ -96,7 +97,7 @@
             // 
             // configButton
             // 
-            this.configButton.Location = new System.Drawing.Point(95, 227);
+            this.configButton.Location = new System.Drawing.Point(95, 300);
             this.configButton.Name = "configButton";
             this.configButton.Size = new System.Drawing.Size(153, 60);
             this.configButton.TabIndex = 9;
@@ -104,12 +105,25 @@
             this.configButton.UseVisualStyleBackColor = true;
             this.configButton.Click += new System.EventHandler(this.configButton_Click);
             // 
+            // raspberryPiDetailsText
+            // 
+            this.raspberryPiDetailsText.AutoSize = true;
+            this.raspberryPiDetailsText.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.raspberryPiDetailsText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
+            this.raspberryPiDetailsText.Location = new System.Drawing.Point(184, 48);
+            this.raspberryPiDetailsText.Name = "raspberryPiDetailsText";
+            this.raspberryPiDetailsText.Size = new System.Drawing.Size(419, 28);
+            this.raspberryPiDetailsText.TabIndex = 10;
+            this.raspberryPiDetailsText.Text = "RASPBERRY PI NOT CONFIGURED";
+            this.raspberryPiDetailsText.Click += new System.EventHandler(this.label3_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
             this.ClientSize = new System.Drawing.Size(853, 461);
+            this.Controls.Add(this.raspberryPiDetailsText);
             this.Controls.Add(this.configButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.romDropCollector);
@@ -132,6 +146,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button configButton;
+        private System.Windows.Forms.Label raspberryPiDetailsText;
     }
 }
 

@@ -14,14 +14,15 @@ namespace RetroTransferUI
 {
     public partial class Dashboard : Form
     {
-        public RaspberryPi raspberryPi;
-
+        private RaspberryPi raspberryPi;
+        private RaspberryPiConfig raspberryPiConfig = new RaspberryPiConfig();
         private ScpConnector scp = new ScpConnector();
 
         public Dashboard()
         {
             InitializeComponent();
-            //romManager.AddRomEvent += RomManager_AddRomEvent; ;
+            InitializeRaspberryPiText();
+            raspberryPiConfig.RaiseConfigEvent += RaspberryPiConfig_ConfigEvent;
         }
 
         //private void RomManager_AddRomEvent(object sender, Rom e)
@@ -29,6 +30,25 @@ namespace RetroTransferUI
         //    listBox2.Items.Add(e.DestinationPath);
         //    flowLayoutPanel1.Controls.Add(new RomDisplay(e));
         //}
+
+        private void RaspberryPiConfig_ConfigEvent(object sender, RaspberryPi e)
+        {
+            raspberryPi = e;
+            InitializeRaspberryPiText();
+        }
+
+        private void InitializeRaspberryPiText()
+        {
+            if (raspberryPi == null)
+            {
+
+            }
+            else
+            {
+                raspberryPiDetailsText.Text = $"Sending to {raspberryPi.Username}@{raspberryPi.IpAddress}";
+            }
+        }
+
 
         private void romDropCollector_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -101,8 +121,12 @@ namespace RetroTransferUI
 
         private void configButton_Click(object sender, EventArgs e)
         {
-            RaspberryPiConfig raspberryPiConfig = new RaspberryPiConfig();
-            raspberryPiConfig.Show();
+            raspberryPiConfig.ShowDialog();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
