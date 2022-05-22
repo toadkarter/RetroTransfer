@@ -6,12 +6,18 @@ namespace RetroTransferLibrary
 {
     public class PlatformExtensions
     {
+
         private Dictionary<List<string>, string> platformExtensions = new Dictionary<List<string>, string>();
-        
+
         /// <summary>
         /// Constructor that establishes the key value pairs.
         /// </summary>
         public PlatformExtensions()
+        {
+            initPlatformExtensions();
+        }
+
+        public void initPlatformExtensions()
         {
             platformExtensions[new List<string> { ".gba" }] = "gba";
             platformExtensions[new List<string> { ".gb" }] = "gb";
@@ -20,6 +26,7 @@ namespace RetroTransferLibrary
             platformExtensions[new List<string> { ".nes" }] = "nes";
             platformExtensions[new List<string> { ".smc", ".sfc" }] = "snes";
         }
+
 
         /// <summary>
         /// Takes a string containing the current file extension and returns the name of the platform to which the file belongs.
@@ -37,6 +44,18 @@ namespace RetroTransferLibrary
                 }
             }
             return "";
+        }
+
+        public List<string> GetPlatforms()
+        {
+            List<string> platforms = new List<string>();
+
+            foreach (string platform in platformExtensions.Values) 
+            {
+                platforms.Add(platform);
+            }
+
+            return platforms;
         }
     }
 }

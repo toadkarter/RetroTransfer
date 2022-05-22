@@ -16,17 +16,19 @@ namespace RetroTransferUI
     {
 
         private RomManager romManager = new RomManager();
+        private ScpConnector scp = new ScpConnector();
 
         public Form1()
         {
             InitializeComponent();
-            romManager.AddRomEvent += RomManager_AddRomEvent; ;
+            //romManager.AddRomEvent += RomManager_AddRomEvent; ;
         }
 
-        private void RomManager_AddRomEvent(object sender, Rom e)
-        {
-            listBox2.Items.Add(e.DestinationPath);
-        }
+        //private void RomManager_AddRomEvent(object sender, Rom e)
+        //{
+        //    listBox2.Items.Add(e.DestinationPath);
+        //    flowLayoutPanel1.Controls.Add(new RomDisplay(e));
+        //}
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -44,6 +46,7 @@ namespace RetroTransferUI
             foreach (string filePath in filePaths)
             {
                 romManager.addRom(filePath);
+                flowLayoutPanel1.Controls.Add(new RomDisplay(filePath));
             }
             // listBox1.Items.Add(filePath[0]);
             // ScpConnector scp = new ScpConnector();
@@ -58,6 +61,25 @@ namespace RetroTransferUI
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            List<Rom> romsToSend = new List<Rom>();
+            foreach (RomDisplay romDisplay in flowLayoutPanel1.Controls)
+            {
+                romsToSend.Add(romDisplay.CurrentRom);
+            }
+
+            scp.SendRom(romsToSend, "/home/pi/retropie");
+
+            flowLayoutPanel1.Controls.Clear();
         }
     }
 }
