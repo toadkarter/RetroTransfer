@@ -11,11 +11,11 @@ using RetroTransferLibrary;
 
 namespace RetroTransferUI
 {
-    public partial class RaspberryPiConfig : Form
+    public partial class ConfigurationForm : Form
     {
         public event EventHandler<RaspberryPi> RaiseConfigEvent;
 
-        public RaspberryPiConfig()
+        public ConfigurationForm()
         {
             InitializeComponent();
         }

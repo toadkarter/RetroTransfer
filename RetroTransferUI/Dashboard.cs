@@ -16,24 +16,26 @@ namespace RetroTransferUI
     public partial class Dashboard : Form
     {
         private RaspberryPi raspberryPi;
-        private RaspberryPiConfig raspberryPiConfig = new RaspberryPiConfig();
+        private ConfigurationForm raspberryPiConfig = new ConfigurationForm();
         private ScpConnector scp = new ScpConnector();
-        private Configuration config = new Configuration();
+        private ConfigurationConnection config = new ConfigurationConnection();
 
         public Dashboard()
         {
             InitializeComponent();
+            CheckConfigForRaspberryPi();
             InitializeRaspberryPiText();
-
-            if (config.ConfigFileExists())
-            {
-
-            }
-            
-            
-            
             raspberryPiConfig.RaiseConfigEvent += RaspberryPiConfig_ConfigEvent;
         }
+
+        private void CheckConfigForRaspberryPi()
+        {
+            if (config.ConfigFileExists())
+            {
+                raspberryPi = config.GetRaspberryPiFromConfig();
+            }
+        }
+
 
         //private void RomManager_AddRomEvent(object sender, Rom e)
         //{
@@ -147,7 +149,7 @@ namespace RetroTransferUI
         {
             if (raspberryPi != null)
             {
-                config.WriteToConfig(raspberryPi);
+                config.SaveRaspberryPiToConfig(raspberryPi);
             }
         }
     }

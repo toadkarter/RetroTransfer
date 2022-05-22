@@ -1,6 +1,6 @@
 ﻿namespace RetroTransferUI
 {
-    partial class RaspberryPiConfig
+    partial class ConfigurationForm
     {
         /// <summary>
         /// Required designer variable.

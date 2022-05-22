@@ -5,14 +5,15 @@ using System.Text;
 
 namespace RetroTransferLibrary
 {
-    public class Configuration
+    public class ConfigurationConnection
     {
         // Consider making these being inputs
+      
         private string applicationDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
         private string configFile = "config.txt";
         private string filePath;
 
-        public Configuration()
+        public ConfigurationConnection()
         {
             filePath = Path.Combine(applicationDirectory, configFile);
         }
@@ -22,11 +23,18 @@ namespace RetroTransferLibrary
             return File.Exists(filePath);
         }
 
-        public void WriteToConfig(RaspberryPi raspberryPi)
+        public void SaveRaspberryPiToConfig(RaspberryPi raspberryPi)
         {
             string encryptedPassword = EncryptPassword(raspberryPi.Password);
             string text = $"{raspberryPi.IpAddress},{raspberryPi.Username},{encryptedPassword},{raspberryPi.RetroPieDirectory}";
             File.WriteAllText(filePath, text);
+        }
+
+        public RaspberryPi GetRaspberryPiFromConfig()
+        {
+            string[] text = File.ReadAllText(filePath).Split(',');
+            string decryptedPassword = DecryptPassword(text[2]);
+            return new RaspberryPi(text[0], text[1], decryptedPassword, text[3]);
         }
 
         /// <summary>
