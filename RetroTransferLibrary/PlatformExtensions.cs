@@ -9,16 +9,14 @@ namespace RetroTransferLibrary
     {
         private readonly string applicationDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
         private readonly string platformsFile = "platforms.txt";
-        private Dictionary<List<string>, string> platformExtensions = new Dictionary<List<string>, string>();
-        private string filePath;
+        private readonly string filePath;
 
-        /// <summary>
-        /// Constructor that establishes the key value pairs.
-        /// </summary>
+        private readonly Dictionary<List<string>, string> platformExtensionsLookup = new Dictionary<List<string>, string>();
+
+
         public PlatformExtensions()
         {
             filePath = Path.Combine(applicationDirectory, platformsFile);
-
             InitPlatformExtensions();
         }
 
@@ -27,57 +25,59 @@ namespace RetroTransferLibrary
             return File.Exists(platformsFile);
         }
 
-
-
-        public void InitPlatformExtensions()
-        {
-            string[] platformsFileText = File.ReadAllLines(filePath);
-
-            foreach (string platformExtensionsLine in platformsFileText)
-            {
-                string[] all = platformExtensionsLine.Split(':');
-                string platform = all[0];
-                string[] extensionsList = all[1].Split(',');
-
-                List<string> extensions = new List<string>();
-                foreach (string extension in extensionsList)
-                {
-                    extensions.Add(extension);
-                }
-
-                platformExtensions[extensions] = platform;
-            }
-        }
-
-
-        /// <summary>
-        /// Takes a string containing the current file extension and returns the name of the platform to which the file belongs.
-        /// Returns null if the platform is unknown.
-        /// </summary>
-        /// <param name="extension"></param>
-        /// <returns></returns>
         public string GetPlatform(string extension)
         {
-            foreach (List<string> currentPlatformExtensions in platformExtensions.Keys)
+            foreach (List<string> currentPlatformExtensions in platformExtensionsLookup.Keys)
             {
                 if (currentPlatformExtensions.Contains(extension))
                 {
-                    return platformExtensions[currentPlatformExtensions];
+                    return platformExtensionsLookup[currentPlatformExtensions];
                 }
             }
             return "";
         }
 
-        public List<string> GetPlatforms()
+        public List<string> GetListOfAllPlatforms()
         {
             List<string> platforms = new List<string>();
 
-            foreach (string platform in platformExtensions.Values) 
+            foreach (string platform in platformExtensionsLookup.Values)
             {
                 platforms.Add(platform);
             }
 
             return platforms;
+        }
+
+        private void InitPlatformExtensions()
+        {
+            string[] platformExtensionsText = File.ReadAllLines(filePath);
+
+            foreach (string platformExtensionsLine in platformExtensionsText)
+            {
+                AddToPlatformExtensions(platformExtensionsLine);
+            }
+        }
+
+        private void AddToPlatformExtensions(string platformExtensionsLine)
+        {
+            string[] platformExtensions = platformExtensionsLine.Split(':');
+
+            string platform = platformExtensions[0];
+            List<string> extensions = GetExtensions(platformExtensions[1].Split(','));
+
+            platformExtensionsLookup[extensions] = platform;
+        }
+
+        private List<string> GetExtensions(string[] extensionsList)
+        {
+            List<string> extensions = new List<string>();
+            foreach (string extension in extensionsList)
+            {
+                extensions.Add(extension);
+            }
+
+            return extensions;
         }
     }
 }

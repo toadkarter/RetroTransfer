@@ -15,7 +15,7 @@ namespace RetroTransferUI
             InitializeComponent();
             CurrentRom = new Rom(filePath);
             romName.Text = CurrentRom.FileName;
-            foreach (string platform in platforms.GetPlatforms()) 
+            foreach (string platform in platforms.GetListOfAllPlatforms()) 
             {
                 platformsList.Items.Add(platform);
             }
