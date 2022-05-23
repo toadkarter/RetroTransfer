@@ -25,13 +25,20 @@ namespace RetroTransferUI
             this.roms = roms;
             romUploadThread.DoWork += RomUploadThread_DoWork;
             romUploadThread.ProgressChanged += RomUploadThread_ProgressChanged;
+            romUploadThread.RunWorkerCompleted += RomUploadThread_RunWorkerCompleted;
 
             romUploadThread.RunWorkerAsync();
         }
 
+        private void RomUploadThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            sendingText.Text = "All Done!";
+            returnButton.Enabled = true;
+        }
+
         private void RomUploadThread_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            dummyTextBox.Text = e.UserState.ToString();
+            sendingText.Text = e.UserState.ToString();
             progressBar.Increment(e.ProgressPercentage);
         }
 
@@ -54,30 +61,19 @@ namespace RetroTransferUI
                 using (Stream localFile = File.OpenRead(rom.LocalPath))
                 {
                     romUploadThread.ReportProgress(progressBarOffset, rom.FileName);
+
                     string destinationPath = $"{raspberryPi.RetroPieDirectory}/{rom.DestinationPath}";
                     scp.Upload(localFile, destinationPath);
+                    
                     romUploadThread.ReportProgress(romPercentageWithOffset, rom.FileName);
                 }
             }
             scp.Disconnect();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        private void RomUploadForm_Load(object sender, EventArgs e)
+        private void returnButton_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
     }
 }

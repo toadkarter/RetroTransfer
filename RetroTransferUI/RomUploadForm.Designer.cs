@@ -30,7 +30,9 @@
         {
             this.romUploadThread = new System.ComponentModel.BackgroundWorker();
             this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.dummyTextBox = new System.Windows.Forms.TextBox();
+            this.sendingText = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.returnButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // romUploadThread
@@ -40,31 +42,59 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(147, 133);
+            this.progressBar.Location = new System.Drawing.Point(43, 114);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(265, 23);
+            this.progressBar.Size = new System.Drawing.Size(343, 23);
             this.progressBar.TabIndex = 0;
             // 
-            // dummyTextBox
+            // sendingText
             // 
-            this.dummyTextBox.Location = new System.Drawing.Point(39, 84);
-            this.dummyTextBox.Name = "dummyTextBox";
-            this.dummyTextBox.Size = new System.Drawing.Size(482, 20);
-            this.dummyTextBox.TabIndex = 1;
+            this.sendingText.AutoEllipsis = true;
+            this.sendingText.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendingText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
+            this.sendingText.Location = new System.Drawing.Point(43, 83);
+            this.sendingText.Name = "sendingText";
+            this.sendingText.Size = new System.Drawing.Size(343, 28);
+            this.sendingText.TabIndex = 9;
+            this.sendingText.Text = "SENDING";
+            this.sendingText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoEllipsis = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
+            this.label1.Location = new System.Drawing.Point(43, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(343, 28);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "TRANSFERRING";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // returnButton
+            // 
+            this.returnButton.Enabled = false;
+            this.returnButton.Location = new System.Drawing.Point(176, 166);
+            this.returnButton.Name = "returnButton";
+            this.returnButton.Size = new System.Drawing.Size(75, 23);
+            this.returnButton.TabIndex = 11;
+            this.returnButton.Text = "Return";
+            this.returnButton.UseVisualStyleBackColor = true;
+            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
             // RomUploadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
-            this.ClientSize = new System.Drawing.Size(546, 354);
-            this.Controls.Add(this.dummyTextBox);
+            this.ClientSize = new System.Drawing.Size(424, 220);
+            this.Controls.Add(this.returnButton);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.sendingText);
             this.Controls.Add(this.progressBar);
             this.Name = "RomUploadForm";
             this.Text = "RomUploadForm";
-            this.Load += new System.EventHandler(this.RomUploadForm_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -72,6 +102,8 @@
 
         private System.ComponentModel.BackgroundWorker romUploadThread;
         private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.TextBox dummyTextBox;
+        private System.Windows.Forms.Label sendingText;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button returnButton;
     }
 }
