@@ -43,7 +43,7 @@
             this.romDisplayContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
             this.romDisplayContainer.Location = new System.Drawing.Point(70, 134);
             this.romDisplayContainer.Name = "romDisplayContainer";
-            this.romDisplayContainer.Size = new System.Drawing.Size(387, 206);
+            this.romDisplayContainer.Size = new System.Drawing.Size(425, 206);
             this.romDisplayContainer.TabIndex = 4;
             this.romDisplayContainer.DragDrop += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragDrop);
             this.romDisplayContainer.DragEnter += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragEnter);
@@ -95,7 +95,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
-            this.ClientSize = new System.Drawing.Size(821, 442);
+            this.ClientSize = new System.Drawing.Size(859, 442);
             this.Controls.Add(this.headerText);
             this.Controls.Add(this.configButton);
             this.Controls.Add(this.label1);

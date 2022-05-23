@@ -81,7 +81,6 @@ namespace RetroTransferUI
 
             RomUploadForm romUploadForm = new RomUploadForm(romsToSend);
             romUploadForm.ShowDialog();
-
             romDisplayContainer.Controls.Clear();
         }
 
