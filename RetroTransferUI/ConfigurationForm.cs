@@ -13,7 +13,8 @@ namespace RetroTransferUI
 {
     public partial class ConfigurationForm : Form
     {
-        public event EventHandler<RaspberryPi> RaiseConfigEvent;
+        private RaspberryPi raspberryPi = RaspberryPi.Instance;
+        public event EventHandler RaiseConfigEvent;
 
         public ConfigurationForm()
         {
@@ -46,22 +47,22 @@ namespace RetroTransferUI
         // TODO: Validate Form
         private void saveAndReturnButton_Click(object sender, EventArgs e)
         {
-            RaspberryPi currentRaspberryPi = getRaspberryPiFromFields();
-            RaiseConfigEvent?.Invoke(this, currentRaspberryPi);
+            setRaspberryPiFromFields();
+            RaiseConfigEvent?.Invoke(this, e);
             Close();
         }
 
-        private RaspberryPi getRaspberryPiFromFields()
+        private void setRaspberryPiFromFields()
         {
             string ipAddress = ipAddressField.Text;
             string username= usernameField.Text;
             string password = passwordField.Text;
             string retroPieDirectory = retropieDirectoryField.Text;
 
-            return new RaspberryPi(ipAddress, username, password, retroPieDirectory);
+            raspberryPi.Configure(ipAddress, username, password, retroPieDirectory);
         }
 
-        public void UpdateConfigurationFields(RaspberryPi raspberryPi)
+        public void UpdateConfigurationFields()
         {
             ipAddressField.Text = raspberryPi.IpAddress;
             usernameField.Text = raspberryPi.Username;

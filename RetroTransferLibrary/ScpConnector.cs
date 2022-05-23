@@ -13,8 +13,9 @@ namespace RetroTransferLibrary
         // TODO - Add credentials list
         // TODO - Add password encryption https://stackoverflow.com/questions/1678555/password-encryption-decryption-code-in-net
         // TODO - Isolate the file name and extension from the filePath. Consider putting this into an individual object.
-        public void SendRom(RaspberryPi raspberryPi, List<Rom> roms)
+        public void SendRom(List<Rom> roms)
         {
+            RaspberryPi raspberryPi = RaspberryPi.Instance;
             ScpClient scp = new ScpClient(raspberryPi.IpAddress, raspberryPi.Username, raspberryPi.Password);
             scp.Connect();
 

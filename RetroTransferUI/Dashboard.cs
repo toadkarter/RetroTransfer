@@ -15,10 +15,10 @@ namespace RetroTransferUI
 {
     public partial class Dashboard : Form
     {
-        private RaspberryPi raspberryPi;
+        private RaspberryPi raspberryPi = RaspberryPi.Instance;
         private ConfigurationForm raspberryPiConfigForm = new ConfigurationForm();
-        private ScpConnector scp = new ScpConnector();
         private ConfigurationConnection config = new ConfigurationConnection();
+        private ScpConnector scp = new ScpConnector();
 
         public Dashboard()
         {
@@ -32,14 +32,13 @@ namespace RetroTransferUI
         {
             if (config.ConfigFileExists())
             {
-                raspberryPi = config.GetRaspberryPiFromConfig();
-                raspberryPiConfigForm.UpdateConfigurationFields(raspberryPi);
+                config.GetRaspberryPiFromConfig();
+                raspberryPiConfigForm.UpdateConfigurationFields();
             }
         }
 
-        private void RaspberryPiConfig_ConfigEvent(object sender, RaspberryPi e)
+        private void RaspberryPiConfig_ConfigEvent(object sender, EventArgs e)
         {
-            raspberryPi = e;
             InitializeRaspberryPiText();
             flowLayoutPanel1.Controls.Clear();
         }
@@ -47,7 +46,7 @@ namespace RetroTransferUI
         // Note to self: Is it safer to include the Raspberry Pi as the parameter?
         private void InitializeRaspberryPiText()
         {
-            if (raspberryPi == null)
+            if (!raspberryPi.IsInitialized)
             {
                 // Show alert saying that the Raspberry Pi hasn't been configured properly
 
@@ -105,7 +104,7 @@ namespace RetroTransferUI
                 romsToSend.Add(romDisplay.CurrentRom);
             }
 
-            scp.SendRom(raspberryPi, romsToSend);
+            scp.SendRom(romsToSend);
             Debug.Write("Sent all the roms");
             flowLayoutPanel1.Controls.Clear();
         }
@@ -143,7 +142,7 @@ namespace RetroTransferUI
         {
             if (raspberryPi != null)
             {
-                config.SaveRaspberryPiToConfig(raspberryPi);
+                config.SaveRaspberryPiToConfig();
             }
         }
     }

@@ -5,34 +5,35 @@ namespace RetroTransferLibrary
 {
     public class RaspberryPi
     {
+        private static RaspberryPi instance = null;
+        private static readonly object padlock = new object();
 
-        /// <summary>
-        /// The IP address associated with this Raspberry Pi.
-        /// </summary>
-        public string IpAddress { get; set; }
+        RaspberryPi() { }
 
-        /// <summary>
-        /// The username that holds the installation of the Raspberry Pi.
-        /// </summary>
-        public string Username { get; set; }
-
-        public string RetroPieDirectory { get; set; }
-
-
-        /// <summary>
-        /// The login password for the Raspberry Pi. 
-        /// </summary>
-        public string Password { get; set; }
-
-        /// <summary>
-        /// Constructor for RaspberryPi class.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="ipAddress"></param>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        public RaspberryPi(string ipAddress, string username, string password, string retroPieDirectory)
+        public static RaspberryPi Instance
         {
+            get
+            {
+                lock(padlock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new RaspberryPi();
+                    }
+                    return instance;
+                }
+            }
+        }
+
+        public string IpAddress { get; private set; }
+        public string Username { get; private set; }
+        public string RetroPieDirectory { get; private set; }
+        public string Password { get; private set; }
+        public bool IsInitialized { get; private set; } = false;
+
+        public void Configure(string ipAddress, string username, string password, string retroPieDirectory)
+        {
+            IsInitialized = true;
             IpAddress = ipAddress;
             Username = username;
             Password = password;
