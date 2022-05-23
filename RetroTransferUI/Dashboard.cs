@@ -15,16 +15,28 @@ namespace RetroTransferUI
 {
     public partial class Dashboard : Form
     {
-        private RaspberryPi raspberryPi = RaspberryPi.Instance;
-        private ConfigurationForm configForm = new ConfigurationForm();
-        private ConfigurationConnection configConnection = new ConfigurationConnection();
+        private readonly RaspberryPi raspberryPi = RaspberryPi.Instance;
+        private readonly ConfigurationForm configForm = new ConfigurationForm();
+        private readonly ConfigurationConnection configConnection = new ConfigurationConnection();
 
         public Dashboard()
         {
             InitializeComponent();
+
+            configForm.RaiseConfigEvent += RaspberryPiConfig_ConfigEvent;
+            
             CheckConfigForRaspberryPi();
             ConfigureHeaderText();
-            configForm.RaiseConfigEvent += RaspberryPiConfig_ConfigEvent;
+            ShowIntroMessage();
+        }
+
+        private void ShowIntroMessage()
+        {
+            if (!raspberryPi.IsInitialized)
+            {
+                MessageBox.Show("No save data found. Please configure your Raspberry Pi details before proceeding.");
+                configForm.ShowDialog();
+            }
         }
 
         private void CheckConfigForRaspberryPi()
@@ -42,16 +54,17 @@ namespace RetroTransferUI
             romDisplayContainer.Controls.Clear();
         }
 
-        // Note to self: Is it safer to include the Raspberry Pi as the parameter?
         private void ConfigureHeaderText()
         {
             if (!raspberryPi.IsInitialized)
             {
-                // Show alert saying that the Raspberry Pi hasn't been configured properly
+                DisableControls();
+                headerText.Text = "RASPBERRY PI NOT CONFIGURED";
 
             }
             else
             {
+                EnableControls();
                 headerText.Text = $"Sending to {raspberryPi.Username}@{raspberryPi.IpAddress}";
             }
         }
@@ -111,6 +124,17 @@ namespace RetroTransferUI
         private void RomDisplayContainer_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
+        }
+
+        private void DisableControls()
+        {
+            romDisplayContainer.Enabled = false;
+            sendButton.Enabled = false;
+        }
+        private void EnableControls()
+        {
+            romDisplayContainer.Enabled = true;
+            sendButton.Enabled = true;
         }
     }
 }
