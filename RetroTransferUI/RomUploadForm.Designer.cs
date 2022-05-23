@@ -51,7 +51,7 @@
             // 
             this.sendingText.AutoEllipsis = true;
             this.sendingText.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sendingText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
+            this.sendingText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
             this.sendingText.Location = new System.Drawing.Point(43, 83);
             this.sendingText.Name = "sendingText";
             this.sendingText.Size = new System.Drawing.Size(343, 28);
@@ -63,7 +63,7 @@
             // 
             this.label1.AutoEllipsis = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
             this.label1.Location = new System.Drawing.Point(43, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(343, 28);
@@ -80,13 +80,14 @@
             this.returnButton.TabIndex = 11;
             this.returnButton.Text = "Return";
             this.returnButton.UseVisualStyleBackColor = true;
-            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
+            this.returnButton.Visible = false;
+            this.returnButton.Click += new System.EventHandler(this.ReturnButton_Click);
             // 
             // RomUploadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(41)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(424, 220);
             this.Controls.Add(this.returnButton);
             this.Controls.Add(this.label1);

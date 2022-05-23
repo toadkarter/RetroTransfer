@@ -16,23 +16,40 @@ namespace RetroTransferUI
 {
     public partial class RomUploadForm : Form
     {
-        RaspberryPi raspberryPi = RaspberryPi.Instance;
-        List<Rom> roms;
-        
+        readonly RaspberryPi raspberryPi = RaspberryPi.Instance;
+        readonly List<Rom> roms;
+        int progressBarOffset = 2;
+        int romPercentageWithOffset; 
+
         public RomUploadForm(List<Rom> roms)
         {
-            InitializeComponent();
             this.roms = roms;
+            
+            InitializeComponent();
+            InitializeProgressBarValues();
+            InitializeEvents();
+
+            romUploadThread.RunWorkerAsync();
+        }
+
+        private void InitializeEvents()
+        {
             romUploadThread.DoWork += RomUploadThread_DoWork;
             romUploadThread.ProgressChanged += RomUploadThread_ProgressChanged;
             romUploadThread.RunWorkerCompleted += RomUploadThread_RunWorkerCompleted;
+        }
 
-            romUploadThread.RunWorkerAsync();
+        private void InitializeProgressBarValues()
+        {
+            int romPercentage = (int)Math.Round(1.0 / roms.Count * 100);
+            progressBarOffset = 2;
+            romPercentageWithOffset = romPercentage - progressBarOffset;
         }
 
         private void RomUploadThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             sendingText.Text = "All Done!";
+            returnButton.Visible = true;
             returnButton.Enabled = true;
         }
 
@@ -44,34 +61,39 @@ namespace RetroTransferUI
 
         private void RomUploadThread_DoWork(object sender, DoWorkEventArgs e)
         {
-            SendRom();
+            ConnectAndUploadRoms();
         }
 
-        public void SendRom()
+        public void ConnectAndUploadRoms()
         {
             ScpClient scp = new ScpClient(raspberryPi.IpAddress, raspberryPi.Username, raspberryPi.Password);
             scp.Connect();
-
-            int progressBarOffset = 2;
-            int romPercentage = (int)Math.Round(1.0 / roms.Count * 100);
-            int romPercentageWithOffset = romPercentage - progressBarOffset;
-
-            foreach (Rom rom in roms)
-            {
-                using (Stream localFile = File.OpenRead(rom.LocalPath))
-                {
-                    romUploadThread.ReportProgress(progressBarOffset, rom.FileName);
-
-                    string destinationPath = $"{raspberryPi.RetroPieDirectory}/{rom.DestinationPath}";
-                    scp.Upload(localFile, destinationPath);
-                    
-                    romUploadThread.ReportProgress(romPercentageWithOffset, rom.FileName);
-                }
-            }
+            UploadAllRoms(scp);
             scp.Disconnect();
         }
 
-        private void returnButton_Click(object sender, EventArgs e)
+        private void UploadAllRoms(ScpClient scp)
+        {
+            foreach (Rom rom in roms)
+            {
+                UploadRom(scp, rom);
+            }
+        }
+
+        private void UploadRom(ScpClient scp, Rom rom)
+        {
+            using (Stream localFile = File.OpenRead(rom.LocalPath))
+            {
+                romUploadThread.ReportProgress(progressBarOffset, rom.FileName);
+
+                string destinationPath = $"{raspberryPi.RetroPieDirectory}/{rom.DestinationPath}";
+                scp.Upload(localFile, destinationPath);
+
+                romUploadThread.ReportProgress(romPercentageWithOffset, rom.FileName);
+            }
+        }
+
+        private void ReturnButton_Click(object sender, EventArgs e)
         {
             Close();
         }

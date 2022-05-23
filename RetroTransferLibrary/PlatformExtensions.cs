@@ -1,31 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace RetroTransferLibrary
 {
     public class PlatformExtensions
     {
-        // This is ugly as sin, figure out a way to read this in from an enum or something.
-
+        private readonly string applicationDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
+        private readonly string platformsFile = "platforms.txt";
         private Dictionary<List<string>, string> platformExtensions = new Dictionary<List<string>, string>();
+        private string filePath;
 
         /// <summary>
         /// Constructor that establishes the key value pairs.
         /// </summary>
         public PlatformExtensions()
         {
-            initPlatformExtensions();
+            filePath = Path.Combine(applicationDirectory, platformsFile);
+
+            InitPlatformExtensions();
         }
 
-        public void initPlatformExtensions()
+        public bool PlatformsFileExists()
         {
-            platformExtensions[new List<string> { ".gba" }] = "gba";
-            platformExtensions[new List<string> { ".gb" }] = "gb";
-            platformExtensions[new List<string> { ".gbc" }] = "gbc";
-            platformExtensions[new List<string> { ".z64", ".n64", ".v64" }] = "n64";
-            platformExtensions[new List<string> { ".nes" }] = "nes";
-            platformExtensions[new List<string> { ".smc", ".sfc" }] = "snes";
+            return File.Exists(platformsFile);
+        }
+
+
+
+        public void InitPlatformExtensions()
+        {
+            string[] platformsFileText = File.ReadAllLines(filePath);
+
+            foreach (string platformExtensionsLine in platformsFileText)
+            {
+                string[] all = platformExtensionsLine.Split(':');
+                string platform = all[0];
+                string[] extensionsList = all[1].Split(',');
+
+                List<string> extensions = new List<string>();
+                foreach (string extension in extensionsList)
+                {
+                    extensions.Add(extension);
+                }
+
+                platformExtensions[extensions] = platform;
+            }
         }
 
 

@@ -42,12 +42,13 @@
             // 
             // ipAddressField
             // 
-            this.ipAddressField.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(231)))), ((int)(((byte)(190)))));
+            this.ipAddressField.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(179)))), ((int)(((byte)(15)))));
+            this.ipAddressField.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ipAddressField.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ipAddressField.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
-            this.ipAddressField.Location = new System.Drawing.Point(188, 93);
+            this.ipAddressField.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
+            this.ipAddressField.Location = new System.Drawing.Point(188, 96);
             this.ipAddressField.Name = "ipAddressField";
-            this.ipAddressField.Size = new System.Drawing.Size(186, 32);
+            this.ipAddressField.Size = new System.Drawing.Size(186, 25);
             this.ipAddressField.TabIndex = 0;
             this.ipAddressField.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -55,7 +56,7 @@
             // 
             this.hostNameLabel.AutoSize = true;
             this.hostNameLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hostNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
+            this.hostNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
             this.hostNameLabel.Location = new System.Drawing.Point(51, 96);
             this.hostNameLabel.Name = "hostNameLabel";
             this.hostNameLabel.Size = new System.Drawing.Size(128, 24);
@@ -66,7 +67,7 @@
             // 
             this.userNameLabel.AutoSize = true;
             this.userNameLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
+            this.userNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
             this.userNameLabel.Location = new System.Drawing.Point(51, 141);
             this.userNameLabel.Name = "userNameLabel";
             this.userNameLabel.Size = new System.Drawing.Size(121, 24);
@@ -77,7 +78,7 @@
             // 
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
+            this.passwordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
             this.passwordLabel.Location = new System.Drawing.Point(51, 185);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(117, 24);
@@ -86,31 +87,33 @@
             // 
             // usernameField
             // 
-            this.usernameField.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(231)))), ((int)(((byte)(190)))));
+            this.usernameField.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(179)))), ((int)(((byte)(15)))));
+            this.usernameField.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.usernameField.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameField.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
-            this.usernameField.Location = new System.Drawing.Point(188, 138);
+            this.usernameField.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
+            this.usernameField.Location = new System.Drawing.Point(188, 141);
             this.usernameField.Name = "usernameField";
-            this.usernameField.Size = new System.Drawing.Size(186, 32);
+            this.usernameField.Size = new System.Drawing.Size(186, 25);
             this.usernameField.TabIndex = 12;
             this.usernameField.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.usernameField.TextChanged += new System.EventHandler(this.UsernameField_TextChanged);
             // 
             // passwordField
             // 
-            this.passwordField.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(231)))), ((int)(((byte)(190)))));
+            this.passwordField.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(179)))), ((int)(((byte)(15)))));
+            this.passwordField.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.passwordField.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordField.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
-            this.passwordField.Location = new System.Drawing.Point(188, 182);
+            this.passwordField.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
+            this.passwordField.Location = new System.Drawing.Point(188, 185);
             this.passwordField.Name = "passwordField";
             this.passwordField.PasswordChar = '*';
-            this.passwordField.Size = new System.Drawing.Size(186, 32);
+            this.passwordField.Size = new System.Drawing.Size(186, 25);
             this.passwordField.TabIndex = 13;
             this.passwordField.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // saveAndReturnButton
             // 
-            this.saveAndReturnButton.Location = new System.Drawing.Point(150, 349);
+            this.saveAndReturnButton.Location = new System.Drawing.Point(148, 348);
             this.saveAndReturnButton.Name = "saveAndReturnButton";
             this.saveAndReturnButton.Size = new System.Drawing.Size(110, 38);
             this.saveAndReturnButton.TabIndex = 14;
@@ -122,7 +125,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
             this.label4.Location = new System.Drawing.Point(75, 248);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(272, 24);
@@ -131,12 +134,13 @@
             // 
             // retropieDirectoryField
             // 
-            this.retropieDirectoryField.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(231)))), ((int)(((byte)(190)))));
+            this.retropieDirectoryField.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(179)))), ((int)(((byte)(15)))));
+            this.retropieDirectoryField.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.retropieDirectoryField.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.retropieDirectoryField.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
-            this.retropieDirectoryField.Location = new System.Drawing.Point(36, 275);
+            this.retropieDirectoryField.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
+            this.retropieDirectoryField.Location = new System.Drawing.Point(37, 284);
             this.retropieDirectoryField.Name = "retropieDirectoryField";
-            this.retropieDirectoryField.Size = new System.Drawing.Size(356, 32);
+            this.retropieDirectoryField.Size = new System.Drawing.Size(356, 25);
             this.retropieDirectoryField.TabIndex = 16;
             this.retropieDirectoryField.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -144,18 +148,18 @@
             // 
             this.raspberryPiConfigTitleText.AutoSize = true;
             this.raspberryPiConfigTitleText.Font = new System.Drawing.Font("Arial Rounded MT Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.raspberryPiConfigTitleText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
+            this.raspberryPiConfigTitleText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
             this.raspberryPiConfigTitleText.Location = new System.Drawing.Point(12, 25);
             this.raspberryPiConfigTitleText.Name = "raspberryPiConfigTitleText";
             this.raspberryPiConfigTitleText.Size = new System.Drawing.Size(400, 33);
             this.raspberryPiConfigTitleText.TabIndex = 17;
             this.raspberryPiConfigTitleText.Text = "Raspberry Pi Configuration";
             // 
-            // RaspberryPiConfig
+            // ConfigurationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(41)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(418, 426);
             this.Controls.Add(this.raspberryPiConfigTitleText);
             this.Controls.Add(this.retropieDirectoryField);
@@ -167,8 +171,9 @@
             this.Controls.Add(this.userNameLabel);
             this.Controls.Add(this.hostNameLabel);
             this.Controls.Add(this.ipAddressField);
-            this.Name = "RaspberryPiConfig";
+            this.Name = "ConfigurationForm";
             this.Text = "Configuration";
+            this.Load += new System.EventHandler(this.ConfigurationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

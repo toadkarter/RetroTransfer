@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using RetroTransferLibrary;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Windows.Controls;
 
 namespace RetroTransferUI
 {
@@ -30,11 +32,11 @@ namespace RetroTransferUI
             ShowIntroMessage();
         }
 
+
         private void ShowIntroMessage()
         {
             if (!raspberryPi.IsInitialized)
             {
-                MessageBox.Show("No save data found. Please configure your Raspberry Pi details before proceeding.");
                 configForm.ShowDialog();
             }
         }
@@ -59,13 +61,13 @@ namespace RetroTransferUI
             if (!raspberryPi.IsInitialized)
             {
                 DisableControls();
-                headerText.Text = "RASPBERRY PI NOT CONFIGURED";
+                configButton.Text = "RASPBERRY PI NOT CONFIGURED";
 
             }
             else
             {
                 EnableControls();
-                headerText.Text = $"Sending to {raspberryPi.Username}@{raspberryPi.IpAddress}";
+                configButton.Text = $"{raspberryPi.Username}@{raspberryPi.IpAddress}";
             }
         }
 
@@ -135,6 +137,25 @@ namespace RetroTransferUI
         {
             romDisplayContainer.Enabled = true;
             sendButton.Enabled = true;
+        }
+
+        private void headerText_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void raspberryPiConfigTitleText_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            Border border = new Border();
+            border.CornerRadius = new System.Windows.CornerRadius(15);
+
+
+
         }
     }
 }

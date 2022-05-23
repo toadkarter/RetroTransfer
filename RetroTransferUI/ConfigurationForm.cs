@@ -59,5 +59,10 @@ namespace RetroTransferUI
             passwordField.Text = raspberryPi.Password;
             retropieDirectoryField.Text = raspberryPi.RetroPieDirectory;
         }
+
+        private void ConfigurationForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
