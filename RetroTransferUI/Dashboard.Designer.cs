@@ -33,8 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.configButton = new System.Windows.Forms.Button();
             this.headerText = new System.Windows.Forms.Label();
-            this.romUploadThread = new System.ComponentModel.BackgroundWorker();
-            this.dummyTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // romDisplayContainer
@@ -43,9 +41,9 @@
             this.romDisplayContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.romDisplayContainer.AutoScroll = true;
             this.romDisplayContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(146)))));
-            this.romDisplayContainer.Location = new System.Drawing.Point(58, 137);
+            this.romDisplayContainer.Location = new System.Drawing.Point(70, 134);
             this.romDisplayContainer.Name = "romDisplayContainer";
-            this.romDisplayContainer.Size = new System.Drawing.Size(419, 206);
+            this.romDisplayContainer.Size = new System.Drawing.Size(387, 206);
             this.romDisplayContainer.TabIndex = 4;
             this.romDisplayContainer.DragDrop += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragDrop);
             this.romDisplayContainer.DragEnter += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragEnter);
@@ -92,27 +90,12 @@
             this.headerText.TabIndex = 10;
             this.headerText.Text = "PLEASE CONFIGURE RASPBERRY PI BEFORE PROCEEDING";
             // 
-            // romUploadThread
-            // 
-            this.romUploadThread.WorkerReportsProgress = true;
-            this.romUploadThread.WorkerSupportsCancellation = true;
-            this.romUploadThread.DoWork += new System.ComponentModel.DoWorkEventHandler(this.romUploadThread_DoWork);
-            // 
-            // dummyTextBox
-            // 
-            this.dummyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dummyTextBox.Location = new System.Drawing.Point(40, 485);
-            this.dummyTextBox.Name = "dummyTextBox";
-            this.dummyTextBox.Size = new System.Drawing.Size(437, 31);
-            this.dummyTextBox.TabIndex = 11;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(123)))));
-            this.ClientSize = new System.Drawing.Size(853, 543);
-            this.Controls.Add(this.dummyTextBox);
+            this.ClientSize = new System.Drawing.Size(821, 442);
             this.Controls.Add(this.headerText);
             this.Controls.Add(this.configButton);
             this.Controls.Add(this.label1);
@@ -132,8 +115,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button configButton;
         private System.Windows.Forms.Label headerText;
-        private System.ComponentModel.BackgroundWorker romUploadThread;
-        private System.Windows.Forms.TextBox dummyTextBox;
     }
 }
 

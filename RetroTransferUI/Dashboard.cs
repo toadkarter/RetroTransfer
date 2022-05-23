@@ -18,24 +18,13 @@ namespace RetroTransferUI
         private RaspberryPi raspberryPi = RaspberryPi.Instance;
         private ConfigurationForm configForm = new ConfigurationForm();
         private ConfigurationConnection configConnection = new ConfigurationConnection();
-        private ScpConnection scp = new ScpConnection();
 
         public Dashboard()
         {
             InitializeComponent();
             CheckConfigForRaspberryPi();
             ConfigureHeaderText();
-            romUploadThread.DoWork += RomUploadThread_DoWork;
-            romUploadThread.ProgressChanged += RomUploadThread_ProgressChanged;
             configForm.RaiseConfigEvent += RaspberryPiConfig_ConfigEvent;
-            scp.RaiseStartingRomTransferEvent += Scp_RaiseStartingRomTransferEvent;
-        }
-
-
-
-        private void RomUploadThread_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Console.WriteLine("Rom uploaded");
         }
 
         private void CheckConfigForRaspberryPi()
@@ -67,12 +56,6 @@ namespace RetroTransferUI
             }
         }
 
-
-        private void romDropCollector_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void romDropCollector_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
@@ -90,7 +73,15 @@ namespace RetroTransferUI
 
         private void SendButton_Click(object sender, EventArgs e)
         {
-            romUploadThread.RunWorkerAsync();
+            List<Rom> romsToSend = new List<Rom>();
+            foreach (RomDisplay romDisplay in romDisplayContainer.Controls)
+            {
+                romsToSend.Add(romDisplay.CurrentRom);
+            }
+
+            RomUploadForm romUploadForm = new RomUploadForm(romsToSend);
+            romUploadForm.ShowDialog();
+
             romDisplayContainer.Controls.Clear();
         }
 
@@ -121,26 +112,6 @@ namespace RetroTransferUI
         private void RomDisplayContainer_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
-        }
-
-        private void romUploadThread_DoWork(object sender, DoWorkEventArgs e)
-        {
-            List<Rom> romsToSend = new List<Rom>();
-            foreach (RomDisplay romDisplay in romDisplayContainer.Controls)
-            {
-                romsToSend.Add(romDisplay.CurrentRom);
-            }
-            scp.SendRom(romsToSend);
-        }
-
-        private void RomUploadThread_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            dummyTextBox.Text = e.UserState as String;
-        }
-
-        private void Scp_RaiseStartingRomTransferEvent(object sender, string e)
-        {
-            romUploadThread.ReportProgress(0, e);
         }
     }
 }

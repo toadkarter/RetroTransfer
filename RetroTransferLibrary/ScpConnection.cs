@@ -14,6 +14,8 @@ namespace RetroTransferLibrary
 
         public void SendRom(List<Rom> roms)
         {
+            int progressBarPercentage = (1 / roms.Count) * 100;
+
             ScpClient scp = new ScpClient(raspberryPi.IpAddress, raspberryPi.Username, raspberryPi.Password);
             scp.Connect();
 
