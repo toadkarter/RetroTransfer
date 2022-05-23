@@ -10,19 +10,20 @@ namespace RetroTransferLibrary
         private readonly string applicationDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
         private readonly string platformsFile = "platforms.txt";
         private readonly string filePath;
+        public event EventHandler<string> RaisePlatformExtensionsError;
 
         private readonly Dictionary<List<string>, string> platformExtensionsLookup = new Dictionary<List<string>, string>();
-
 
         public PlatformExtensions()
         {
             filePath = Path.Combine(applicationDirectory, platformsFile);
+
             InitPlatformExtensions();
         }
 
-        public bool PlatformsFileExists()
+        public static void PlatformsFileExists()
         {
-            return File.Exists(platformsFile);
+            //return File.Exists(Path.Combine(applicationDirectory, platformsFile));
         }
 
         public string GetPlatform(string extension)
@@ -49,7 +50,7 @@ namespace RetroTransferLibrary
             return platforms;
         }
 
-        private void InitPlatformExtensions()
+        public void InitPlatformExtensions()
         {
             string[] platformExtensionsText = File.ReadAllLines(filePath);
 
