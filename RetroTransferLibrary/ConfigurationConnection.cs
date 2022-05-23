@@ -9,10 +9,10 @@ namespace RetroTransferLibrary
     {
         // Consider making these being inputs
 
-        private RaspberryPi raspberryPi = RaspberryPi.Instance;
-        private string applicationDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
-        private string configFile = "config.txt";
-        private string filePath;
+        private readonly RaspberryPi raspberryPi = RaspberryPi.Instance;
+        private readonly string applicationDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
+        private readonly string configFile = "config.txt";
+        private readonly string filePath;
 
         public ConfigurationConnection()
         {
@@ -24,14 +24,14 @@ namespace RetroTransferLibrary
             return File.Exists(filePath);
         }
 
-        public void SaveRaspberryPiToConfig()
+        public void SaveRaspberryPi()
         {
             string encryptedPassword = EncryptPassword(raspberryPi.Password);
             string text = $"{raspberryPi.IpAddress},{raspberryPi.Username},{encryptedPassword},{raspberryPi.RetroPieDirectory}";
             File.WriteAllText(filePath, text);
         }
 
-        public void GetRaspberryPiFromConfig()
+        public void GetRaspberryPi()
         {
             string[] text = File.ReadAllText(filePath).Split(',');
             string decryptedPassword = DecryptPassword(text[2]);

@@ -16,35 +16,45 @@ namespace RetroTransferUI
     public partial class Dashboard : Form
     {
         private RaspberryPi raspberryPi = RaspberryPi.Instance;
-        private ConfigurationForm raspberryPiConfigForm = new ConfigurationForm();
-        private ConfigurationConnection config = new ConfigurationConnection();
-        private ScpConnector scp = new ScpConnector();
+        private ConfigurationForm configForm = new ConfigurationForm();
+        private ConfigurationConnection configConnection = new ConfigurationConnection();
+        private ScpConnection scp = new ScpConnection();
 
         public Dashboard()
         {
             InitializeComponent();
             CheckConfigForRaspberryPi();
-            InitializeRaspberryPiText();
-            raspberryPiConfigForm.RaiseConfigEvent += RaspberryPiConfig_ConfigEvent;
+            ConfigureHeaderText();
+            romUploadThread.DoWork += RomUploadThread_DoWork;
+            romUploadThread.ProgressChanged += RomUploadThread_ProgressChanged;
+            configForm.RaiseConfigEvent += RaspberryPiConfig_ConfigEvent;
+            scp.RaiseStartingRomTransferEvent += Scp_RaiseStartingRomTransferEvent;
+        }
+
+
+
+        private void RomUploadThread_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Console.WriteLine("Rom uploaded");
         }
 
         private void CheckConfigForRaspberryPi()
         {
-            if (config.ConfigFileExists())
+            if (configConnection.ConfigFileExists())
             {
-                config.GetRaspberryPiFromConfig();
-                raspberryPiConfigForm.UpdateConfigurationFields();
+                configConnection.GetRaspberryPi();
+                configForm.UpdateConfigurationFields();
             }
         }
 
         private void RaspberryPiConfig_ConfigEvent(object sender, EventArgs e)
         {
-            InitializeRaspberryPiText();
-            flowLayoutPanel1.Controls.Clear();
+            ConfigureHeaderText();
+            romDisplayContainer.Controls.Clear();
         }
 
         // Note to self: Is it safer to include the Raspberry Pi as the parameter?
-        private void InitializeRaspberryPiText()
+        private void ConfigureHeaderText()
         {
             if (!raspberryPi.IsInitialized)
             {
@@ -53,7 +63,7 @@ namespace RetroTransferUI
             }
             else
             {
-                raspberryPiDetailsText.Text = $"Sending to {raspberryPi.Username}@{raspberryPi.IpAddress}";
+                headerText.Text = $"Sending to {raspberryPi.Username}@{raspberryPi.IpAddress}";
             }
         }
 
@@ -73,91 +83,64 @@ namespace RetroTransferUI
             string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             foreach (string filePath in filePaths)
             {
-                flowLayoutPanel1.Controls.Add(new RomDisplay(filePath));
+                romDisplayContainer.Controls.Add(new RomDisplay(filePath));
             }
-            // listBox1.Items.Add(filePath[0]);
-            // ScpConnector scp = new ScpConnector();
-            // scp.SendFile(filePath[0]);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
+        private void SendButton_Click(object sender, EventArgs e)
+        {
+            romUploadThread.RunWorkerAsync();
+            romDisplayContainer.Controls.Clear();
         }
 
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void ConfigButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void sendButton_Click(object sender, EventArgs e)
-        {
-            List<Rom> romsToSend = new List<Rom>();
-
-            foreach (RomDisplay romDisplay in flowLayoutPanel1.Controls)
-            {
-                romsToSend.Add(romDisplay.CurrentRom);
-            }
-
-            scp.SendRom(romsToSend);
-            Debug.Write("Sent all the roms");
-            flowLayoutPanel1.Controls.Clear();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            Color borderColor = Color.White;
-            int borderThickness = 2;
-            ButtonBorderStyle borderStyle = ButtonBorderStyle.Dashed;
-
-            ControlPaint.DrawBorder(e.Graphics, romDropCollector.ClientRectangle,
-                borderColor, borderThickness, borderStyle,
-                borderColor, borderThickness, borderStyle,
-                borderColor, borderThickness, borderStyle,
-                borderColor, borderThickness, borderStyle) ;
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void configButton_Click(object sender, EventArgs e)
-        {
-            raspberryPiConfigForm.ShowDialog();
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
+            configForm.ShowDialog();
         }
 
 
         private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (raspberryPi != null)
+            if (raspberryPi.IsInitialized)
             {
-                config.SaveRaspberryPiToConfig();
+                configConnection.SaveRaspberryPi();
             }
         }
 
-        private void flowLayoutPanel1_DragDrop(object sender, DragEventArgs e)
+        private void RomDisplayContainer_DragDrop(object sender, DragEventArgs e)
         {
             string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             foreach (string filePath in filePaths)
             {
-                flowLayoutPanel1.Controls.Add(new RomDisplay(filePath));
+                romDisplayContainer.Controls.Add(new RomDisplay(filePath));
             }
         }
 
-        private void flowLayoutPanel1_DragEnter(object sender, DragEventArgs e)
+        private void RomDisplayContainer_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
+        }
+
+        private void romUploadThread_DoWork(object sender, DoWorkEventArgs e)
+        {
+            List<Rom> romsToSend = new List<Rom>();
+            foreach (RomDisplay romDisplay in romDisplayContainer.Controls)
+            {
+                romsToSend.Add(romDisplay.CurrentRom);
+            }
+            scp.SendRom(romsToSend);
+        }
+
+        private void RomUploadThread_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            dummyTextBox.Text = e.UserState as String;
+        }
+
+        private void Scp_RaiseStartingRomTransferEvent(object sender, string e)
+        {
+            romUploadThread.ReportProgress(0, e);
         }
     }
 }

@@ -94,7 +94,7 @@
             this.usernameField.Size = new System.Drawing.Size(186, 32);
             this.usernameField.TabIndex = 12;
             this.usernameField.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.usernameField.TextChanged += new System.EventHandler(this.usernameField_TextChanged);
+            this.usernameField.TextChanged += new System.EventHandler(this.UsernameField_TextChanged);
             // 
             // passwordField
             // 
@@ -116,7 +116,7 @@
             this.saveAndReturnButton.TabIndex = 14;
             this.saveAndReturnButton.Text = "Save and Return";
             this.saveAndReturnButton.UseVisualStyleBackColor = true;
-            this.saveAndReturnButton.Click += new System.EventHandler(this.saveAndReturnButton_Click);
+            this.saveAndReturnButton.Click += new System.EventHandler(this.SaveAndReturnButton_Click);
             // 
             // label4
             // 
@@ -150,7 +150,6 @@
             this.raspberryPiConfigTitleText.Size = new System.Drawing.Size(400, 33);
             this.raspberryPiConfigTitleText.TabIndex = 17;
             this.raspberryPiConfigTitleText.Text = "Raspberry Pi Configuration";
-            this.raspberryPiConfigTitleText.Click += new System.EventHandler(this.raspberryPiConfigTitleText_Click);
             // 
             // RaspberryPiConfig
             // 

@@ -21,17 +21,7 @@ namespace RetroTransferUI
             InitializeComponent();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void usernameField_TextChanged(object sender, EventArgs e)
+        private void UsernameField_TextChanged(object sender, EventArgs e)
         {
             TextBox currentTextBox = sender as TextBox;
 
@@ -45,14 +35,14 @@ namespace RetroTransferUI
         }
 
         // TODO: Validate Form
-        private void saveAndReturnButton_Click(object sender, EventArgs e)
+        private void SaveAndReturnButton_Click(object sender, EventArgs e)
         {
-            setRaspberryPiFromFields();
+            SetRaspberryPiFromFields();
             RaiseConfigEvent?.Invoke(this, e);
             Close();
         }
 
-        private void setRaspberryPiFromFields()
+        private void SetRaspberryPiFromFields()
         {
             string ipAddress = ipAddressField.Text;
             string username= usernameField.Text;
@@ -68,11 +58,6 @@ namespace RetroTransferUI
             usernameField.Text = raspberryPi.Username;
             passwordField.Text = raspberryPi.Password;
             retropieDirectoryField.Text = raspberryPi.RetroPieDirectory;
-        }
-
-        private void raspberryPiConfigTitleText_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
