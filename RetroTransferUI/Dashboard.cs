@@ -145,5 +145,19 @@ namespace RetroTransferUI
                 config.SaveRaspberryPiToConfig();
             }
         }
+
+        private void flowLayoutPanel1_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            foreach (string filePath in filePaths)
+            {
+                flowLayoutPanel1.Controls.Add(new RomDisplay(filePath));
+            }
+        }
+
+        private void flowLayoutPanel1_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.All;
+        }
     }
 }
