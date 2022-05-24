@@ -55,7 +55,7 @@
             this.sendButton.AutoSize = true;
             this.sendButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sendButton.Depth = 0;
-            this.sendButton.Location = new System.Drawing.Point(179, 318);
+            this.sendButton.Location = new System.Drawing.Point(174, 267);
             this.sendButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.sendButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.sendButton.Name = "sendButton";
@@ -86,7 +86,7 @@
             this.mainTabControl.MouseState = MaterialSkin.MouseState.HOVER;
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(434, 401);
+            this.mainTabControl.Size = new System.Drawing.Size(434, 379);
             this.mainTabControl.TabIndex = 17;
             // 
             // mainTab
@@ -96,7 +96,7 @@
             this.mainTab.Location = new System.Drawing.Point(4, 22);
             this.mainTab.Name = "mainTab";
             this.mainTab.Padding = new System.Windows.Forms.Padding(3);
-            this.mainTab.Size = new System.Drawing.Size(426, 375);
+            this.mainTab.Size = new System.Drawing.Size(426, 353);
             this.mainTab.TabIndex = 0;
             this.mainTab.Text = "Main";
             this.mainTab.UseVisualStyleBackColor = true;
@@ -116,7 +116,7 @@
             this.configurationTab.Location = new System.Drawing.Point(4, 22);
             this.configurationTab.Name = "configurationTab";
             this.configurationTab.Padding = new System.Windows.Forms.Padding(3);
-            this.configurationTab.Size = new System.Drawing.Size(426, 375);
+            this.configurationTab.Size = new System.Drawing.Size(426, 353);
             this.configurationTab.TabIndex = 1;
             this.configurationTab.Text = "Configuration";
             // 
@@ -125,7 +125,7 @@
             this.materialFlatButton1.AutoSize = true;
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Location = new System.Drawing.Point(145, 278);
+            this.materialFlatButton1.Location = new System.Drawing.Point(134, 255);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton1.Name = "materialFlatButton1";
@@ -255,12 +255,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.romDisplayContainer.AutoScroll = true;
-            this.romDisplayContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.romDisplayContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.romDisplayContainer.Controls.Add(this.dropRomsLabel);
             this.romDisplayContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.romDisplayContainer.Location = new System.Drawing.Point(29, 59);
+            this.romDisplayContainer.Location = new System.Drawing.Point(27, 27);
             this.romDisplayContainer.Name = "romDisplayContainer";
-            this.romDisplayContainer.Size = new System.Drawing.Size(363, 210);
+            this.romDisplayContainer.Size = new System.Drawing.Size(363, 179);
             this.romDisplayContainer.TabIndex = 4;
             this.romDisplayContainer.WrapContents = false;
             this.romDisplayContainer.DragDrop += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragDrop);
@@ -272,22 +272,23 @@
             this.dropRomsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dropRomsLabel.BackColor = System.Drawing.Color.Transparent;
             this.dropRomsLabel.Depth = 0;
-            this.dropRomsLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.dropRomsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.dropRomsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dropRomsLabel.Location = new System.Drawing.Point(3, 0);
             this.dropRomsLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.dropRomsLabel.Name = "dropRomsLabel";
-            this.dropRomsLabel.Size = new System.Drawing.Size(339, 235);
+            this.dropRomsLabel.Size = new System.Drawing.Size(360, 204);
             this.dropRomsLabel.TabIndex = 15;
             this.dropRomsLabel.Text = "- Drop ROMS Here -";
             this.dropRomsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dropRomsLabel.Click += new System.EventHandler(this.dropRomsLabel_Click);
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(41)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(437, 510);
+            this.ClientSize = new System.Drawing.Size(437, 462);
             this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.materialTabSelector2);
             this.Name = "Dashboard";

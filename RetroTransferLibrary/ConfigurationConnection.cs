@@ -6,8 +6,6 @@ namespace RetroTransferLibrary
 {
     public class ConfigurationConnection
     {
-        // Consider making these being inputs
-
         private readonly RaspberryPi raspberryPi = RaspberryPi.Instance;
         private readonly string applicationDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
         private readonly string configFile = "config.txt";

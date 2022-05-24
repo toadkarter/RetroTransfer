@@ -72,7 +72,6 @@
             this.romName.Size = new System.Drawing.Size(160, 13);
             this.romName.TabIndex = 8;
             this.romName.Text = "ROM FILE NAME";
-            this.romName.Click += new System.EventHandler(this.label2_Click);
             // 
             // RomDisplay
             // 
@@ -85,7 +84,6 @@
             this.Controls.Add(this.platformsList);
             this.Name = "RomDisplay";
             this.Size = new System.Drawing.Size(343, 57);
-            this.Load += new System.EventHandler(this.RomDisplay_Load);
             this.ResumeLayout(false);
 
         }

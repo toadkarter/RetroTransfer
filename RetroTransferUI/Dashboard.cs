@@ -5,6 +5,7 @@ using RetroTransferLibrary;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System.Drawing;
+using System.Linq;
 
 namespace RetroTransferUI
 {
@@ -73,8 +74,14 @@ namespace RetroTransferUI
         {
             if (!raspberryPi.IsInitialized)
             {
-                MessageBox.Show("Please configure your Raspberry Pi in the 'Configuration' tab before attempting to transfer ROMS!");
-            } else
+                MessageBox.Show("Please configure your Raspberry Pi in the 'Configuration' tab before attempting to transfer ROMS!", "Error");
+            }
+
+            if (romDisplayContainer.Contains(dropRomsLabel))
+            {
+                MessageBox.Show("Please add some ROMs before proceeding!", "Error");
+            }
+            else
             {
                 SendRoms();
             }
@@ -82,15 +89,23 @@ namespace RetroTransferUI
 
         private void SendRoms()
         {
+            List<Rom> romsToSend = GetListOfCurrentRoms();
+            RomUploadForm romUploadForm = new RomUploadForm(romsToSend);
+            romUploadForm.ShowDialog();
+            romDisplayContainer.Controls.Clear();
+            romDisplayContainer.Controls.Add(dropRomsLabel);
+        }
+
+        private List<Rom> GetListOfCurrentRoms()
+        {
+
             List<Rom> romsToSend = new List<Rom>();
             foreach (RomDisplay romDisplay in romDisplayContainer.Controls)
             {
                 romsToSend.Add(romDisplay.CurrentRom);
             }
 
-            RomUploadForm romUploadForm = new RomUploadForm(romsToSend);
-            romUploadForm.ShowDialog();
-            romDisplayContainer.Controls.Clear();
+            return romsToSend;
         }
 
         private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
@@ -133,10 +148,6 @@ namespace RetroTransferUI
         {
             SetRaspberryPiFromFields();
             romDisplayContainer.Controls.Clear();
-            if (!mainTabControl.Controls.Contains(mainTab))
-            {
-                mainTabControl.Controls.Add(mainTab);
-            }
             mainTabControl.SelectedTab = mainTab;
         }
 
@@ -174,6 +185,11 @@ namespace RetroTransferUI
         }
 
         private void romDisplayContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dropRomsLabel_Click(object sender, EventArgs e)
         {
 
         }
