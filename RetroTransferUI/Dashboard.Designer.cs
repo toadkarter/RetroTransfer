@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.romDisplayContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.sendButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialTabSelector2 = new MaterialSkin.Controls.MaterialTabSelector();
             this.mainTabControl = new MaterialSkin.Controls.MaterialTabControl();
@@ -43,30 +42,20 @@
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.romDisplayContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.dropRomsLabel = new MaterialSkin.Controls.MaterialLabel();
             this.mainTabControl.SuspendLayout();
             this.mainTab.SuspendLayout();
             this.configurationTab.SuspendLayout();
+            this.romDisplayContainer.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // romDisplayContainer
-            // 
-            this.romDisplayContainer.AllowDrop = true;
-            this.romDisplayContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.romDisplayContainer.AutoScroll = true;
-            this.romDisplayContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
-            this.romDisplayContainer.Location = new System.Drawing.Point(17, 35);
-            this.romDisplayContainer.Name = "romDisplayContainer";
-            this.romDisplayContainer.Size = new System.Drawing.Size(390, 247);
-            this.romDisplayContainer.TabIndex = 4;
-            this.romDisplayContainer.DragDrop += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragDrop);
-            this.romDisplayContainer.DragEnter += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragEnter);
             // 
             // sendButton
             // 
             this.sendButton.AutoSize = true;
             this.sendButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sendButton.Depth = 0;
-            this.sendButton.Location = new System.Drawing.Point(178, 311);
+            this.sendButton.Location = new System.Drawing.Point(179, 318);
             this.sendButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.sendButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.sendButton.Name = "sendButton";
@@ -259,6 +248,40 @@
             this.materialLabel1.TabIndex = 0;
             this.materialLabel1.Text = "Host Name";
             // 
+            // romDisplayContainer
+            // 
+            this.romDisplayContainer.AllowDrop = true;
+            this.romDisplayContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.romDisplayContainer.AutoScroll = true;
+            this.romDisplayContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.romDisplayContainer.Controls.Add(this.dropRomsLabel);
+            this.romDisplayContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.romDisplayContainer.Location = new System.Drawing.Point(29, 59);
+            this.romDisplayContainer.Name = "romDisplayContainer";
+            this.romDisplayContainer.Size = new System.Drawing.Size(363, 210);
+            this.romDisplayContainer.TabIndex = 4;
+            this.romDisplayContainer.WrapContents = false;
+            this.romDisplayContainer.DragDrop += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragDrop);
+            this.romDisplayContainer.DragEnter += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragEnter);
+            this.romDisplayContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.romDisplayContainer_Paint);
+            // 
+            // dropRomsLabel
+            // 
+            this.dropRomsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dropRomsLabel.BackColor = System.Drawing.Color.Transparent;
+            this.dropRomsLabel.Depth = 0;
+            this.dropRomsLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.dropRomsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dropRomsLabel.Location = new System.Drawing.Point(3, 0);
+            this.dropRomsLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.dropRomsLabel.Name = "dropRomsLabel";
+            this.dropRomsLabel.Size = new System.Drawing.Size(339, 235);
+            this.dropRomsLabel.TabIndex = 15;
+            this.dropRomsLabel.Text = "- Drop ROMS Here -";
+            this.dropRomsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -270,17 +293,18 @@
             this.Name = "Dashboard";
             this.Text = "RetroTransfer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
+            this.Load += new System.EventHandler(this.Dashboard_Load);
             this.mainTabControl.ResumeLayout(false);
             this.mainTab.ResumeLayout(false);
             this.mainTab.PerformLayout();
             this.configurationTab.ResumeLayout(false);
             this.configurationTab.PerformLayout();
+            this.romDisplayContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.FlowLayoutPanel romDisplayContainer;
         private MaterialSkin.Controls.MaterialFlatButton sendButton;
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector2;
         private MaterialSkin.Controls.MaterialTabControl mainTabControl;
@@ -295,6 +319,8 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField ipAddressField;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
         private MaterialSkin.Controls.MaterialSingleLineTextField retropieDirectoryField;
+        private System.Windows.Forms.FlowLayoutPanel romDisplayContainer;
+        private MaterialSkin.Controls.MaterialLabel dropRomsLabel;
     }
 }
 

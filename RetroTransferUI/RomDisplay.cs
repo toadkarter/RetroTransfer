@@ -41,5 +41,10 @@ namespace RetroTransferUI
         {
 
         }
+
+        private void RomDisplay_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

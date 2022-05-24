@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using RetroTransferLibrary;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using System.Drawing;
 
 namespace RetroTransferUI
 {
@@ -16,7 +17,7 @@ namespace RetroTransferUI
         public Dashboard()
         {
             InitializeComponent();
-            InitialiseMaterialSkinManager();
+            InitialiseMaterialSkinManager();         
 
             usernameField.TextChanged += (sender, EventArgs) => { UsernameField_TextChanged(sender, EventArgs, usernameField.Text); };
 
@@ -102,6 +103,7 @@ namespace RetroTransferUI
 
         private void RomDisplayContainer_DragDrop(object sender, DragEventArgs e)
         {
+            romDisplayContainer.Controls.Remove(dropRomsLabel);
             string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             foreach (string filePath in filePaths)
             {
@@ -154,6 +156,26 @@ namespace RetroTransferUI
             usernameField.Text = raspberryPi.Username;
             passwordField.Text = raspberryPi.Password;
             retropieDirectoryField.Text = raspberryPi.RetroPieDirectory;
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void romDisplayContainer_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

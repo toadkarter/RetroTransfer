@@ -40,7 +40,7 @@
             this.platformsList.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.platformsList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(179)))), ((int)(((byte)(15)))));
             this.platformsList.FormattingEnabled = true;
-            this.platformsList.Location = new System.Drawing.Point(219, 18);
+            this.platformsList.Location = new System.Drawing.Point(179, 18);
             this.platformsList.Name = "platformsList";
             this.platformsList.Size = new System.Drawing.Size(121, 20);
             this.platformsList.TabIndex = 1;
@@ -51,8 +51,8 @@
             this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
             this.deleteButton.FlatAppearance.BorderSize = 0;
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(179)))), ((int)(((byte)(15)))));
-            this.deleteButton.Location = new System.Drawing.Point(346, 18);
+            this.deleteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(141)))));
+            this.deleteButton.Location = new System.Drawing.Point(306, 18);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(20, 23);
             this.deleteButton.TabIndex = 2;
@@ -63,13 +63,13 @@
             // romName
             // 
             this.romName.AutoEllipsis = true;
-            this.romName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(179)))), ((int)(((byte)(15)))));
+            this.romName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(141)))));
             this.romName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.romName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
             this.romName.Location = new System.Drawing.Point(13, 22);
             this.romName.Margin = new System.Windows.Forms.Padding(3);
             this.romName.Name = "romName";
-            this.romName.Size = new System.Drawing.Size(200, 13);
+            this.romName.Size = new System.Drawing.Size(160, 13);
             this.romName.TabIndex = 8;
             this.romName.Text = "ROM FILE NAME";
             this.romName.Click += new System.EventHandler(this.label2_Click);
@@ -79,12 +79,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(179)))), ((int)(((byte)(15)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(141)))));
             this.Controls.Add(this.romName);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.platformsList);
             this.Name = "RomDisplay";
-            this.Size = new System.Drawing.Size(381, 57);
+            this.Size = new System.Drawing.Size(343, 57);
+            this.Load += new System.EventHandler(this.RomDisplay_Load);
             this.ResumeLayout(false);
 
         }
