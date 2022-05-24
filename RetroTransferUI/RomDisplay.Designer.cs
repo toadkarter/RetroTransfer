@@ -36,6 +36,7 @@
             // platformsList
             // 
             this.platformsList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
+            this.platformsList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.platformsList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.platformsList.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.platformsList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(179)))), ((int)(((byte)(15)))));
@@ -45,6 +46,7 @@
             this.platformsList.Size = new System.Drawing.Size(121, 20);
             this.platformsList.TabIndex = 1;
             this.platformsList.SelectedIndexChanged += new System.EventHandler(this.PlatformList_SelectedIndexChanged);
+            this.platformsList.SelectionChangeCommitted += new System.EventHandler(this.PlatformList_SelectedIndexChanged);
             // 
             // deleteButton
             // 
