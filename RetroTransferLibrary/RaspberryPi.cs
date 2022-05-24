@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text;
-
-namespace RetroTransferLibrary
+﻿namespace RetroTransferLibrary
 {
     public class RaspberryPi
     {

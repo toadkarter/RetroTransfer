@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
 using RetroTransferLibrary;
-using System.IO;
-using System.Runtime.InteropServices;
 using System.Windows.Controls;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace RetroTransferUI
 {
-    public partial class Dashboard : Form
+    public partial class Dashboard : MaterialForm
     {
         private readonly RaspberryPi raspberryPi = RaspberryPi.Instance;
         private readonly ConfigurationForm configForm = new ConfigurationForm();
@@ -25,6 +20,11 @@ namespace RetroTransferUI
         public Dashboard()
         {
             InitializeComponent();
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+
 
             configForm.RaiseConfigEvent += RaspberryPiConfig_ConfigEvent;
             
@@ -157,15 +157,6 @@ namespace RetroTransferUI
 
         private void raspberryPiConfigTitleText_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Dashboard_Load(object sender, EventArgs e)
-        {
-            Border border = new Border();
-            border.CornerRadius = new System.Windows.CornerRadius(15);
-
-
 
         }
     }
