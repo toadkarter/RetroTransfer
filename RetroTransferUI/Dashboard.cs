@@ -2,50 +2,34 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using RetroTransferLibrary;
-using System.Windows.Controls;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 using MaterialSkin;
 using MaterialSkin.Controls;
-using System.Diagnostics;
 
 namespace RetroTransferUI
 {
     public partial class Dashboard : MaterialForm
     {
         private readonly RaspberryPi raspberryPi = RaspberryPi.Instance;
-        private readonly ConfigurationForm configForm = new ConfigurationForm();
         private readonly ConfigurationConnection configConnection = new ConfigurationConnection();
         private readonly PlatformExtensions platformExtensions = PlatformExtensions.Instance;
 
         public Dashboard()
         {
             InitializeComponent();
+            InitialiseMaterialSkinManager();
 
-            
-            
+            usernameField.TextChanged += (sender, EventArgs) => { UsernameField_TextChanged(sender, EventArgs, usernameField.Text); };
+
+            CheckPlatformFileForPlatformExtensions();
+            CheckConfigFileForRaspberryPi();
+        }
+
+        private void InitialiseMaterialSkinManager()
+        {
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Red500, Primary.Red700, Primary.Red100, Accent.Yellow100, TextShade.WHITE);
-
-            usernameField.TextChanged += (sender, EventArgs) => { UsernameField_TextChanged(sender, EventArgs, usernameField.Text); };
-
-            
-            CheckConfigFileForRaspberryPi();
-            CheckPlatformFileForPlatformExtensions();
-
-            ConfigureHeaderText();
-            ShowIntroMessage();
-        }
-
-
-        private void ShowIntroMessage()
-        {
-            if (!raspberryPi.IsInitialized)
-            {
-                configForm.ShowDialog();
-            }
         }
 
         private void CheckPlatformFileForPlatformExtensions()
@@ -62,21 +46,12 @@ namespace RetroTransferUI
             {
                 configConnection.GetRaspberryPi();
                 UpdateConfigurationFields();
+            } else
+            {
+                mainTabControl.SelectedTab = configurationTab;        
             }
         }
 
-
-        private void ConfigureHeaderText()
-        {
-            if (!raspberryPi.IsInitialized)
-            {
-                DisableControls();
-            }
-            else
-            {
-                EnableControls();
-            }
-        }
 
         private void romDropCollector_DragEnter(object sender, DragEventArgs e)
         {
@@ -95,6 +70,17 @@ namespace RetroTransferUI
 
         private void SendButton_Click(object sender, EventArgs e)
         {
+            if (!raspberryPi.IsInitialized)
+            {
+                MessageBox.Show("Please configure your Raspberry Pi in the 'Configuration' tab before attempting to transfer ROMS!");
+            } else
+            {
+                SendRoms();
+            }
+        }
+
+        private void SendRoms()
+        {
             List<Rom> romsToSend = new List<Rom>();
             foreach (RomDisplay romDisplay in romDisplayContainer.Controls)
             {
@@ -105,13 +91,6 @@ namespace RetroTransferUI
             romUploadForm.ShowDialog();
             romDisplayContainer.Controls.Clear();
         }
-
-
-        private void ConfigButton_Click(object sender, EventArgs e)
-        {
-            configForm.ShowDialog();
-        }
-
 
         private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -135,57 +114,6 @@ namespace RetroTransferUI
             e.Effect = DragDropEffects.All;
         }
 
-        private void DisableControls()
-        {
-            romDisplayContainer.Enabled = false;
-            sendButton.Enabled = false;
-        }
-        private void EnableControls()
-        {
-            romDisplayContainer.Enabled = true;
-            sendButton.Enabled = true;
-        }
-
-        private void headerText_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void raspberryPiConfigTitleText_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void materialFlatButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void romDisplayContainer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void materialLabel2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void materialLabel3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void materialSingleLineTextField3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Dashboard_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void UsernameField_TextChanged(object sender, EventArgs e, string text)
         {
             if (text.Length == 0)
@@ -202,8 +130,12 @@ namespace RetroTransferUI
         private void SaveAndReturnButton_Click(object sender, EventArgs e)
         {
             SetRaspberryPiFromFields();
-            ConfigureHeaderText();
             romDisplayContainer.Controls.Clear();
+            if (!mainTabControl.Controls.Contains(mainTab))
+            {
+                mainTabControl.Controls.Add(mainTab);
+            }
+            mainTabControl.SelectedTab = mainTab;
         }
 
         private void SetRaspberryPiFromFields()
