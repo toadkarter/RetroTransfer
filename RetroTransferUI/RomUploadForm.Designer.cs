@@ -60,7 +60,7 @@
             this.sendingText.Name = "sendingText";
             this.sendingText.Size = new System.Drawing.Size(343, 20);
             this.sendingText.TabIndex = 12;
-            this.sendingText.Text = "sendingText";
+            this.sendingText.Text = "Trying to connect to Raspberry Pi...";
             this.sendingText.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // returnButton
@@ -77,7 +77,6 @@
             this.returnButton.Text = "RETURN";
             this.returnButton.UseVisualStyleBackColor = true;
             this.returnButton.Visible = false;
-            this.returnButton.Click += new System.EventHandler(this.ReturnButton_Click);
             // 
             // RomUploadForm
             // 
@@ -90,7 +89,6 @@
             this.Controls.Add(this.progressBar);
             this.Name = "RomUploadForm";
             this.Text = "Transferring";
-            this.Load += new System.EventHandler(this.RomUploadForm_Load);
             this.ResumeLayout(false);
 
         }

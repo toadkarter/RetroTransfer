@@ -32,6 +32,8 @@
             this.materialTabSelector2 = new MaterialSkin.Controls.MaterialTabSelector();
             this.mainTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.mainTab = new System.Windows.Forms.TabPage();
+            this.romDisplayContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.dropRomsLabel = new MaterialSkin.Controls.MaterialLabel();
             this.configurationTab = new System.Windows.Forms.TabPage();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.retropieDirectoryField = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -42,12 +44,10 @@
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.romDisplayContainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.dropRomsLabel = new MaterialSkin.Controls.MaterialLabel();
             this.mainTabControl.SuspendLayout();
             this.mainTab.SuspendLayout();
-            this.configurationTab.SuspendLayout();
             this.romDisplayContainer.SuspendLayout();
+            this.configurationTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // sendButton
@@ -100,6 +100,39 @@
             this.mainTab.TabIndex = 0;
             this.mainTab.Text = "Main";
             this.mainTab.UseVisualStyleBackColor = true;
+            // 
+            // romDisplayContainer
+            // 
+            this.romDisplayContainer.AllowDrop = true;
+            this.romDisplayContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.romDisplayContainer.AutoScroll = true;
+            this.romDisplayContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.romDisplayContainer.Controls.Add(this.dropRomsLabel);
+            this.romDisplayContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.romDisplayContainer.Location = new System.Drawing.Point(27, 27);
+            this.romDisplayContainer.Name = "romDisplayContainer";
+            this.romDisplayContainer.Size = new System.Drawing.Size(363, 179);
+            this.romDisplayContainer.TabIndex = 4;
+            this.romDisplayContainer.WrapContents = false;
+            this.romDisplayContainer.DragDrop += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragDrop);
+            this.romDisplayContainer.DragEnter += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragEnter);
+            // 
+            // dropRomsLabel
+            // 
+            this.dropRomsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dropRomsLabel.BackColor = System.Drawing.Color.Transparent;
+            this.dropRomsLabel.Depth = 0;
+            this.dropRomsLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.dropRomsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dropRomsLabel.Location = new System.Drawing.Point(3, 0);
+            this.dropRomsLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.dropRomsLabel.Name = "dropRomsLabel";
+            this.dropRomsLabel.Size = new System.Drawing.Size(360, 204);
+            this.dropRomsLabel.TabIndex = 15;
+            this.dropRomsLabel.Text = "- Drop ROMS Here -";
+            this.dropRomsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // configurationTab
             // 
@@ -248,39 +281,6 @@
             this.materialLabel1.TabIndex = 0;
             this.materialLabel1.Text = "Host Name";
             // 
-            // romDisplayContainer
-            // 
-            this.romDisplayContainer.AllowDrop = true;
-            this.romDisplayContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.romDisplayContainer.AutoScroll = true;
-            this.romDisplayContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.romDisplayContainer.Controls.Add(this.dropRomsLabel);
-            this.romDisplayContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.romDisplayContainer.Location = new System.Drawing.Point(27, 27);
-            this.romDisplayContainer.Name = "romDisplayContainer";
-            this.romDisplayContainer.Size = new System.Drawing.Size(363, 179);
-            this.romDisplayContainer.TabIndex = 4;
-            this.romDisplayContainer.WrapContents = false;
-            this.romDisplayContainer.DragDrop += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragDrop);
-            this.romDisplayContainer.DragEnter += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragEnter);
-            // 
-            // dropRomsLabel
-            // 
-            this.dropRomsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dropRomsLabel.BackColor = System.Drawing.Color.Transparent;
-            this.dropRomsLabel.Depth = 0;
-            this.dropRomsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.dropRomsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.dropRomsLabel.Location = new System.Drawing.Point(3, 0);
-            this.dropRomsLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.dropRomsLabel.Name = "dropRomsLabel";
-            this.dropRomsLabel.Size = new System.Drawing.Size(360, 204);
-            this.dropRomsLabel.TabIndex = 15;
-            this.dropRomsLabel.Text = "- Drop ROMS Here -";
-            this.dropRomsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,9 +295,9 @@
             this.mainTabControl.ResumeLayout(false);
             this.mainTab.ResumeLayout(false);
             this.mainTab.PerformLayout();
+            this.romDisplayContainer.ResumeLayout(false);
             this.configurationTab.ResumeLayout(false);
             this.configurationTab.PerformLayout();
-            this.romDisplayContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
