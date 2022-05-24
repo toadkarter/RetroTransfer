@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using System.Diagnostics;
 
 namespace RetroTransferUI
 {
@@ -21,12 +22,15 @@ namespace RetroTransferUI
         {
             InitializeComponent();
 
+            
+            
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Red500, Primary.Red700, Primary.Red100, Accent.Yellow100, TextShade.WHITE);
 
+            usernameField.TextChanged += (sender, EventArgs) => { UsernameField_TextChanged(sender, EventArgs, usernameField.Text); };
 
-            configForm.RaiseConfigEvent += RaspberryPiConfig_ConfigEvent;
             
             CheckConfigFileForRaspberryPi();
             CheckPlatformFileForPlatformExtensions();
@@ -57,28 +61,20 @@ namespace RetroTransferUI
             if (configConnection.ConfigFileExists())
             {
                 configConnection.GetRaspberryPi();
-                configForm.UpdateConfigurationFields();
+                UpdateConfigurationFields();
             }
         }
 
-        private void RaspberryPiConfig_ConfigEvent(object sender, EventArgs e)
-        {
-            ConfigureHeaderText();
-            romDisplayContainer.Controls.Clear();
-        }
 
         private void ConfigureHeaderText()
         {
             if (!raspberryPi.IsInitialized)
             {
                 DisableControls();
-                configButton.Text = "RASPBERRY PI NOT CONFIGURED";
-
             }
             else
             {
                 EnableControls();
-                configButton.Text = $"{raspberryPi.Username}@{raspberryPi.IpAddress}";
             }
         }
 
@@ -158,6 +154,74 @@ namespace RetroTransferUI
         private void raspberryPiConfigTitleText_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void materialFlatButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void romDisplayContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void materialLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialSingleLineTextField3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UsernameField_TextChanged(object sender, EventArgs e, string text)
+        {
+            if (text.Length == 0)
+            {
+                retropieDirectoryField.Text = "";
+            }
+            else
+            {
+                retropieDirectoryField.Text = $"/home/{text}/retropie";
+            }
+        }
+
+        // TODO: Validate Form
+        private void SaveAndReturnButton_Click(object sender, EventArgs e)
+        {
+            SetRaspberryPiFromFields();
+            ConfigureHeaderText();
+            romDisplayContainer.Controls.Clear();
+        }
+
+        private void SetRaspberryPiFromFields()
+        {
+            string ipAddress = ipAddressField.Text;
+            string username = usernameField.Text;
+            string password = passwordField.Text;
+            string retroPieDirectory = retropieDirectoryField.Text;
+
+            raspberryPi.Configure(ipAddress, username, password, retroPieDirectory);
+        }
+
+        public void UpdateConfigurationFields()
+        {
+            ipAddressField.Text = raspberryPi.IpAddress;
+            usernameField.Text = raspberryPi.Username;
+            passwordField.Text = raspberryPi.Password;
+            retropieDirectoryField.Text = raspberryPi.RetroPieDirectory;
         }
     }
 }
