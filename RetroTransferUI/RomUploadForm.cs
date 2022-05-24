@@ -9,12 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin;
+using MaterialSkin.Controls;
 using Renci.SshNet;
 using RetroTransferLibrary;
 
 namespace RetroTransferUI
 {
-    public partial class RomUploadForm : Form
+    public partial class RomUploadForm : MaterialForm
     {
         readonly RaspberryPi raspberryPi = RaspberryPi.Instance;
         readonly List<Rom> roms;
@@ -24,7 +26,8 @@ namespace RetroTransferUI
         public RomUploadForm(List<Rom> roms)
         {
             this.roms = roms;
-            
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);        
             InitializeComponent();
             InitializeProgressBarValues();
             InitializeEvents();
@@ -96,6 +99,11 @@ namespace RetroTransferUI
         private void ReturnButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void RomUploadForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
