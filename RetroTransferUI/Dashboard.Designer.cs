@@ -55,7 +55,7 @@
             this.sendButton.AutoSize = true;
             this.sendButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sendButton.Depth = 0;
-            this.sendButton.Location = new System.Drawing.Point(174, 267);
+            this.sendButton.Location = new System.Drawing.Point(184, 256);
             this.sendButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.sendButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.sendButton.Name = "sendButton";
@@ -265,7 +265,6 @@
             this.romDisplayContainer.WrapContents = false;
             this.romDisplayContainer.DragDrop += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragDrop);
             this.romDisplayContainer.DragEnter += new System.Windows.Forms.DragEventHandler(this.RomDisplayContainer_DragEnter);
-            this.romDisplayContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.romDisplayContainer_Paint);
             // 
             // dropRomsLabel
             // 
@@ -281,7 +280,6 @@
             this.dropRomsLabel.TabIndex = 15;
             this.dropRomsLabel.Text = "- Drop ROMS Here -";
             this.dropRomsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.dropRomsLabel.Click += new System.EventHandler(this.dropRomsLabel_Click);
             // 
             // Dashboard
             // 
@@ -294,7 +292,6 @@
             this.Name = "Dashboard";
             this.Text = "RetroTransfer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
-            this.Load += new System.EventHandler(this.Dashboard_Load);
             this.mainTabControl.ResumeLayout(false);
             this.mainTab.ResumeLayout(false);
             this.mainTab.PerformLayout();
