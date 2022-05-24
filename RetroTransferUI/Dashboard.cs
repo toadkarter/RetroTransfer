@@ -20,6 +20,7 @@ namespace RetroTransferUI
         private readonly RaspberryPi raspberryPi = RaspberryPi.Instance;
         private readonly ConfigurationForm configForm = new ConfigurationForm();
         private readonly ConfigurationConnection configConnection = new ConfigurationConnection();
+        private readonly PlatformExtensions platformExtensions = PlatformExtensions.Instance;
 
         public Dashboard()
         {
@@ -27,7 +28,9 @@ namespace RetroTransferUI
 
             configForm.RaiseConfigEvent += RaspberryPiConfig_ConfigEvent;
             
-            CheckConfigForRaspberryPi();
+            CheckConfigFileForRaspberryPi();
+            CheckPlatformFileForPlatformExtensions();
+
             ConfigureHeaderText();
             ShowIntroMessage();
         }
@@ -41,7 +44,15 @@ namespace RetroTransferUI
             }
         }
 
-        private void CheckConfigForRaspberryPi()
+        private void CheckPlatformFileForPlatformExtensions()
+        {
+            if (platformExtensions.PlatformsFileExists())
+            {
+                platformExtensions.InitPlatformExtensions();
+            }
+        }
+
+        private void CheckConfigFileForRaspberryPi()
         {
             if (configConnection.ConfigFileExists())
             {

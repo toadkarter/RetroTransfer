@@ -8,7 +8,7 @@ namespace RetroTransferUI
     public partial class RomDisplay : UserControl
     {
         public Rom CurrentRom { get; private set; }
-        PlatformExtensions platforms = new PlatformExtensions();
+        PlatformExtensions platforms = PlatformExtensions.Instance;
 
         public RomDisplay(string filePath)
         {

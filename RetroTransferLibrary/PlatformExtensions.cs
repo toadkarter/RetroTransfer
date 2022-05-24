@@ -7,23 +7,35 @@ namespace RetroTransferLibrary
 {
     public class PlatformExtensions
     {
+        private static PlatformExtensions instance = null;
+        private static readonly object padlock = new object();
+
         private readonly string applicationDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
         private readonly string platformsFile = "platforms.txt";
-        private readonly string filePath;
-        public event EventHandler<string> RaisePlatformExtensionsError;
+        private string filePath;
 
         private readonly Dictionary<List<string>, string> platformExtensionsLookup = new Dictionary<List<string>, string>();
 
-        public PlatformExtensions()
-        {
-            filePath = Path.Combine(applicationDirectory, platformsFile);
+        public PlatformExtensions() { }
 
-            InitPlatformExtensions();
+        public static PlatformExtensions Instance
+        {
+            get
+            {
+                lock(padlock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new PlatformExtensions();
+                    }
+                    return instance;
+                }
+            }
         }
 
-        public static void PlatformsFileExists()
+        public bool PlatformsFileExists()
         {
-            //return File.Exists(Path.Combine(applicationDirectory, platformsFile));
+            return File.Exists(Path.Combine(applicationDirectory, platformsFile));
         }
 
         public string GetPlatform(string extension)
@@ -52,6 +64,8 @@ namespace RetroTransferLibrary
 
         public void InitPlatformExtensions()
         {
+            filePath = Path.Combine(applicationDirectory, platformsFile);
+
             string[] platformExtensionsText = File.ReadAllLines(filePath);
 
             foreach (string platformExtensionsLine in platformExtensionsText)

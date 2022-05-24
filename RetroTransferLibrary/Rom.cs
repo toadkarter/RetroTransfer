@@ -34,7 +34,7 @@ namespace RetroTransferLibrary
         /// </summary>
         public string FileName { get; private set; }
 
-        private PlatformExtensions platformExtensions = new PlatformExtensions();
+        private readonly PlatformExtensions platformExtensions = PlatformExtensions.Instance;
 
         /// <summary>
         /// Constructor that establishes the core properties of the ROM.
