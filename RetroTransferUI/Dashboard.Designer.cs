@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.sendButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialTabSelector2 = new MaterialSkin.Controls.MaterialTabSelector();
             this.mainTabControl = new MaterialSkin.Controls.MaterialTabControl();
@@ -239,9 +240,9 @@
             this.materialLabel4.Location = new System.Drawing.Point(50, 198);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(66, 19);
+            this.materialLabel4.Size = new System.Drawing.Size(70, 19);
             this.materialLabel4.TabIndex = 3;
-            this.materialLabel4.Text = "RetroPie";
+            this.materialLabel4.Text = "Directory";
             // 
             // materialLabel3
             // 
@@ -278,18 +279,20 @@
             this.materialLabel1.Location = new System.Drawing.Point(46, 51);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(86, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(81, 19);
             this.materialLabel1.TabIndex = 0;
-            this.materialLabel1.Text = "Host Name";
+            this.materialLabel1.Text = "IP Address";
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(41)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(437, 462);
+            this.ClientSize = new System.Drawing.Size(437, 436);
             this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.materialTabSelector2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Dashboard";
             this.Text = "RetroTransfer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);

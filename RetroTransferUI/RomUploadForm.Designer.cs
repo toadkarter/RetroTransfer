@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RomUploadForm));
             this.romUploadThread = new System.ComponentModel.BackgroundWorker();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.sendingText = new MaterialSkin.Controls.MaterialLabel();
@@ -88,6 +89,7 @@
             this.Controls.Add(this.returnButton);
             this.Controls.Add(this.sendingText);
             this.Controls.Add(this.progressBar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RomUploadForm";
             this.Text = "Transferring";
             this.ResumeLayout(false);

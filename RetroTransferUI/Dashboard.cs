@@ -180,6 +180,7 @@ namespace RetroTransferUI
         {
             SetRaspberryPiFromFields();
             romDisplayContainer.Controls.Clear();
+            romDisplayContainer.Controls.Add(dropRomsLabel);
             mainTabControl.SelectedTab = mainTab;
         }
 
