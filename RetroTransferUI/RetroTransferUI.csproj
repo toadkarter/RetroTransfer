@@ -7,7 +7,7 @@
     <ProjectGuid>{23B0B32C-31AF-47C3-8BC3-2E8BB233A0D6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>RetroTransferUI</RootNamespace>
-    <AssemblyName>RetroTransferUI</AssemblyName>
+    <AssemblyName>RetroTransfer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>lightningbolt.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -110,6 +113,9 @@
       <Project>{dc2b7968-c1ff-43a5-b90b-2ff9d4c5db41}</Project>
       <Name>RetroTransferLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lightningbolt.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
