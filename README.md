@@ -45,7 +45,7 @@ I designed this application largely with personal use in mind, so I mostly inclu
 
 However, if the appliation did not pick up on the file extension, you can still choose the appropriate platform from the dropdown list and RetroTransfer will send the file to the sub-directory associated with that platform. 
 
-### **I play loads of games for the Atari 2600 / Vectrex / other consoles that are not as well known, and I don't want to have to constantly change the dropdown when RetroTransfer doesn't recognise my ROM extensions. Is there any solution for this?**
+### **I play loads of games for the Atari Lynx / Vectrex / other consoles that are not as well known, and I don't want to have to constantly change the dropdown when RetroTransfer doesn't recognise my ROM extensions. Is there any solution for this?**
 
 Yes! Platforms and their file extensions are read in from a file called "platforms.txt" in the root directory, so it is entirely possible to add new extensions and platforms that RetroTransfer will then be able to recognise. 
 
