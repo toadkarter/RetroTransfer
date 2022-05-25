@@ -4,35 +4,67 @@ using System.Text;
 
 namespace RetroTransferLibrary
 {
+    /// <summary>
+    /// Class that connects to the text file and gets details about the Raspberry Pi.
+    /// </summary>
     public class ConfigurationConnection
     {
-        private readonly RaspberryPi raspberryPi = RaspberryPi.Instance;
-        private readonly string applicationDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
-        private readonly string configFile = "config.txt";
-        private readonly string filePath;
+        /// <summary>
+        /// Reference to the current Raspberry Pi loaded into the project (if available).
+        /// </summary>
+        private readonly RaspberryPi _raspberryPi = RaspberryPi.Instance;
 
+        /// <summary>
+        /// Reference to the directory on the computer where this program is installed.
+        /// </summary>
+        private readonly string _applicationDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
+        
+        /// <summary>
+        /// The name of the configuration file.
+        /// </summary>
+        private readonly string _configFile = "config.txt";
+
+        /// <summary>
+        /// Exact file path of where the configuration file is located.
+        /// </summary>
+        private readonly string _filePath;
+
+        /// <summary>
+        /// Constructor for the ConfigurationConnection.
+        /// </summary>
         public ConfigurationConnection()
         {
-            filePath = Path.Combine(applicationDirectory, configFile);
+            // Initialise file path by combining the application directory and the configuration file.
+            _filePath = Path.Combine(_applicationDirectory, _configFile);
         }
 
+        /// <summary>
+        /// Check if the configuration file exists.
+        /// </summary>
+        /// <returns></returns>
         public bool ConfigFileExists()
         {
-            return File.Exists(filePath);
+            return File.Exists(_filePath);
         }
 
+        /// <summary>
+        /// Save Raspberry Pi details to the text file.
+        /// </summary>
         public void SaveRaspberryPi()
         {
-            string encryptedPassword = EncryptPassword(raspberryPi.Password);
-            string text = $"{raspberryPi.IpAddress},{raspberryPi.Username},{encryptedPassword},{raspberryPi.RetroPieDirectory}";
-            File.WriteAllText(filePath, text);
+            string encryptedPassword = EncryptPassword(_raspberryPi.Password);
+            string text = $"{_raspberryPi.IpAddress},{_raspberryPi.Username},{encryptedPassword},{_raspberryPi.RetroPieDirectory}";
+            File.WriteAllText(_filePath, text);
         }
 
+        /// <summary>
+        /// Connect to the texxt file and initialise Raspberry Pi with details contained therein.
+        /// </summary>
         public void GetRaspberryPi()
         {
-            string[] text = File.ReadAllText(filePath).Split(',');
+            string[] text = File.ReadAllText(_filePath).Split(',');
             string decryptedPassword = DecryptPassword(text[2]);
-            raspberryPi.Configure(text[0], text[1], decryptedPassword, text[3]);
+            _raspberryPi.Configure(text[0], text[1], decryptedPassword, text[3]);
         }
 
         /// <summary>
