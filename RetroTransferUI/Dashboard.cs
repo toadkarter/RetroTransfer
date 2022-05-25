@@ -204,6 +204,13 @@ namespace RetroTransferUI
         /// </summary>
         private void SendRoms()
         {
+            if (HasRomsWithUndetectedPlatforms())
+            {
+                MessageBox.Show("Could not detect the correct platform for some of the ROMs in the list. " +
+                    "Please select the appropriate platform for each ROM and try again.", "Error");
+                return;
+            }
+
             List<Rom> romsToSend = GetListOfCurrentRoms();
             RomUploadForm romUploadForm = new RomUploadForm(romsToSend);
             romUploadForm.ShowDialog();
@@ -229,6 +236,22 @@ namespace RetroTransferUI
             }
 
             return romsToSend;
+        }
+
+        /// <summary>
+        /// Check if any ROMs have undetected platforms.
+        /// </summary>
+        /// <returns></returns>
+        private bool HasRomsWithUndetectedPlatforms()
+        {
+            foreach (RomDisplay romDisplay in romDisplayContainer.Controls)
+            {
+                if (romDisplay.CurrentRom.Platform == "")
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>

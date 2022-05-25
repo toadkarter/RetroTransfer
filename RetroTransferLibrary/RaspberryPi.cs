@@ -5,7 +5,7 @@
         private static RaspberryPi instance = null;
         private static readonly object padlock = new object();
 
-        RaspberryPi() { }
+        private RaspberryPi() { }
 
         public static RaspberryPi Instance
         {

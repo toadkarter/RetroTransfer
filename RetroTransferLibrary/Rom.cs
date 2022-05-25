@@ -3,9 +3,7 @@
 namespace RetroTransferLibrary
 {
     public class Rom
-    {
-        public static int _id = 0;
-        
+    {        
         /// <summary>
         /// Id of current Rom for ease of reference.
         /// </summary>
@@ -44,9 +42,6 @@ namespace RetroTransferLibrary
 
             string extension = Path.GetExtension(LocalPath);
             Platform = platformExtensions.GetPlatform(extension);
-
-            // Ensuring thread safety when incrementing the static _id variable
-            Id = System.Threading.Interlocked.Increment(ref _id);
         }
     }
 }
