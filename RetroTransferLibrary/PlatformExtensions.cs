@@ -76,7 +76,15 @@ namespace RetroTransferLibrary
 
             foreach (string platformExtensionsLine in platformExtensionsText)
             {
-                AddToPlatformExtensions(platformExtensionsLine);
+                try
+                {
+                    AddToPlatformExtensions(platformExtensionsLine);
+                }
+                catch (Exception)
+                {
+
+                }
+                
             }
         }
 

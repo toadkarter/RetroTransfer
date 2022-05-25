@@ -166,7 +166,7 @@ namespace RetroTransferUI
             }
             else
             {
-                retropieDirectoryField.Text = $"/home/{text}/retropie";
+                retropieDirectoryField.Text = $"/home/{text}/RetroPie";
             }
         }
 
@@ -181,6 +181,19 @@ namespace RetroTransferUI
             SetRaspberryPiFromFields();
             romDisplayContainer.Controls.Clear();
             mainTabControl.SelectedTab = mainTab;
+        }
+
+        /// <summary>
+        /// Resets the configuration fields if the previous settings have not been saved.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mainTabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            if (e.TabPage == configurationTab)
+            {
+                UpdateConfigurationFields();
+            }
         }
 
         /// <summary>
@@ -277,5 +290,7 @@ namespace RetroTransferUI
             passwordField.Text = _raspberryPi.Password;
             retropieDirectoryField.Text = _raspberryPi.RetroPieDirectory;
         }
+
+
     }
 }

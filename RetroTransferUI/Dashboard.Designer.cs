@@ -88,6 +88,7 @@
             this.mainTabControl.SelectedIndex = 0;
             this.mainTabControl.Size = new System.Drawing.Size(434, 379);
             this.mainTabControl.TabIndex = 17;
+            this.mainTabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.mainTabControl_Selected);
             // 
             // mainTab
             // 
