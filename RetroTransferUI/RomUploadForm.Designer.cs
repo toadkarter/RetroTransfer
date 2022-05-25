@@ -77,6 +77,7 @@
             this.returnButton.Text = "RETURN";
             this.returnButton.UseVisualStyleBackColor = true;
             this.returnButton.Visible = false;
+            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
             // RomUploadForm
             // 

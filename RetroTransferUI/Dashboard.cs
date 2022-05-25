@@ -207,8 +207,12 @@ namespace RetroTransferUI
             List<Rom> romsToSend = GetListOfCurrentRoms();
             RomUploadForm romUploadForm = new RomUploadForm(romsToSend);
             romUploadForm.ShowDialog();
-            romDisplayContainer.Controls.Clear();
-            romDisplayContainer.Controls.Add(dropRomsLabel);
+
+            if (!romUploadForm.ErrorsEncountered)
+            {
+                romDisplayContainer.Controls.Clear();
+                romDisplayContainer.Controls.Add(dropRomsLabel);
+            }
         }
 
         /// <summary>

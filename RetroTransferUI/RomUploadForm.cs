@@ -22,13 +22,13 @@ namespace RetroTransferUI
         /// </summary>
         private readonly List<Rom> _roms;
 
+        public bool ErrorsEncountered { get; private set; } = false;
+
         /// <summary>
         /// Offset variables relating the progress bar to indicate that the sending process has begun.
         /// </summary>
         private int _progressBarOffset = 2;
         private int _romPercentageWithOffset;
-
-        private event EventHandler<string> RaiseShowErrorMessageEvent;
 
         /// <summary>
         /// Constructor that initialises the core elements required for the program.
@@ -75,13 +75,6 @@ namespace RetroTransferUI
             romUploadThread.DoWork += RomUploadThread_DoWork;
             romUploadThread.ProgressChanged += RomUploadThread_ProgressChanged;
             romUploadThread.RunWorkerCompleted += RomUploadThread_RunWorkerCompleted;
-            RaiseShowErrorMessageEvent += RomUploadForm_RaiseShowErrorMessageEvent;
-        }
-
-        // TODO: Figure out how to quit form in a thread-safe way.
-        private void RomUploadForm_RaiseShowErrorMessageEvent(object sender, string e)
-        {
-            MessageBox.Show(e, "Error");
         }
 
 
@@ -94,14 +87,16 @@ namespace RetroTransferUI
         /// <param name="e"></param>
         private void RomUploadThread_DoWork(object sender, DoWorkEventArgs e)
         {
-            ConnectAndUploadRoms();
-        }
+            try
+            {
+                ConnectAndUploadRoms();
 
-        private void RomUploadThread_ShowErrorMessage(object sender, EventArgs e)
-        {
-            MessageBox.Show(e.ToString(), "Error");
-            romUploadThread.CancelAsync();
-            Close();
+            }
+            catch (Exception ex)
+            {
+                ErrorsEncountered = true;
+                MessageBox.Show(ex.Message.ToString(), "Error");
+            }
         }
 
         /// <summary>
@@ -122,11 +117,17 @@ namespace RetroTransferUI
         /// <param name="e"></param>
         private void RomUploadThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            sendingText.Text = "All Done!";
+            if (ErrorsEncountered == true)
+            {
+                sendingText.Text = "ERROR";
+            } else
+            {
+                sendingText.Text = "All Done!";
+            }
+
             returnButton.Visible = true;
             returnButton.Enabled = true;
         }
-
 
         // HELPER METHODS
 
@@ -136,16 +137,8 @@ namespace RetroTransferUI
         public void ConnectAndUploadRoms()
         {
             ScpClient scp = new ScpClient(_raspberryPi.IpAddress, _raspberryPi.Username, _raspberryPi.Password);
-
-            try
-            {
-                scp.Connect();
-            }
-            catch (Exception)
-            {
-                RaiseShowErrorMessageEvent?.Invoke(this, "Can't connect to Raspberry Pi. Please try again later.");
-                return;
-            }
+            
+            scp.Connect();
             UploadAllRoms(scp);
             scp.Disconnect();
         }
@@ -180,6 +173,11 @@ namespace RetroTransferUI
                 // Update progress bar with a value proportionate to the amount of ROMs that need to be uploaded.
                 romUploadThread.ReportProgress(_romPercentageWithOffset, rom.FileName);
             }
+        }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            Close();        
         }
     }
 }
