@@ -22,6 +22,9 @@ namespace RetroTransferUI
         /// </summary>
         private readonly List<Rom> _roms;
 
+        /// <summary>
+        /// Property that determins if the background thread has determined any errors.
+        /// </summary>
         public bool ErrorsEncountered { get; private set; } = false;
 
         /// <summary>
@@ -81,7 +84,8 @@ namespace RetroTransferUI
         // EVENTS
 
         /// <summary>
-        /// When the background thread starts, connect via SCP and upload the ROMs.
+        /// When the background thread starts, connect via SCP and upload the ROMs. 
+        /// Log failures if there is an error.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -90,7 +94,6 @@ namespace RetroTransferUI
             try
             {
                 ConnectAndUploadRoms();
-
             }
             catch (Exception ex)
             {
@@ -111,13 +114,13 @@ namespace RetroTransferUI
         }
 
         /// <summary>
-        /// When all files have been uploaded, change text and add button allowing user to return.
+        /// When all files have been uploaded, check for errors, change text and add button allowing user to return.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void RomUploadThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (ErrorsEncountered == true)
+            if (ErrorsEncountered)
             {
                 sendingText.Text = "ERROR";
             } else
@@ -127,6 +130,16 @@ namespace RetroTransferUI
 
             returnButton.Visible = true;
             returnButton.Enabled = true;
+        }
+
+        /// <summary>
+        /// Close the form when the user clicks the button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ReturnButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         // HELPER METHODS
@@ -175,9 +188,6 @@ namespace RetroTransferUI
             }
         }
 
-        private void returnButton_Click(object sender, EventArgs e)
-        {
-            Close();        
-        }
+
     }
 }

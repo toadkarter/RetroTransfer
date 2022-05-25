@@ -200,7 +200,7 @@ namespace RetroTransferUI
         // HELPER METHODS
 
         /// <summary>
-        /// Send ROMs to RaspberryPi and reset the ROM container.
+        /// Send ROMs to RaspberryPi and reset the ROM container if no errors have been encountered.
         /// </summary>
         private void SendRoms()
         {
@@ -245,7 +245,7 @@ namespace RetroTransferUI
         }
 
         /// <summary>
-        /// If the Raspberry Pi has been initialised, 
+        /// If the Raspberry Pi has been initialised, update the fields of the form to the current Raspberry Pi.
         /// </summary>
         public void UpdateConfigurationFields()
         {
