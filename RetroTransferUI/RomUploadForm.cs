@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows;
+using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using Renci.SshNet;
@@ -21,6 +22,8 @@ namespace RetroTransferUI
         /// List of ROMs that need to be sent.
         /// </summary>
         private readonly List<Rom> _roms;
+
+        private bool _closePending;
 
         /// <summary>
         /// Property that determins if the background thread has determined any errors.
@@ -98,7 +101,7 @@ namespace RetroTransferUI
             catch (Exception ex)
             {
                 ErrorsEncountered = true;
-                MessageBox.Show(ex.Message.ToString(), "Error");
+                System.Windows.MessageBox.Show(ex.Message.ToString(), "Error");
             }
         }
 
@@ -120,6 +123,9 @@ namespace RetroTransferUI
         /// <param name="e"></param>
         private void RomUploadThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            if (_closePending) Close();
+            _closePending = false;
+
             if (ErrorsEncountered)
             {
                 sendingText.Text = "ERROR";
@@ -140,6 +146,34 @@ namespace RetroTransferUI
         private void ReturnButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        /// <summary>
+        /// Overrides the Form Closing event to ensure that race condition doesn't happen.
+        /// https://stackoverflow.com/questions/1731384/how-to-stop-backgroundworker-on-forms-closing-event
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if(romUploadThread.IsBusy)
+            {
+                _closePending = true;
+                romUploadThread.CancelAsync();
+                e.Cancel = true;
+                Enabled = false;
+                return;
+            }
+            base.OnFormClosing(e);
+        }
+
+        /// <summary>
+        /// Stop uploading if user closes the form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RomUploadForm_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
+        {
+            romUploadThread.CancelAsync();
         }
 
         // HELPER METHODS

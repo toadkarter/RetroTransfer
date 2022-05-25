@@ -92,6 +92,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RomUploadForm";
             this.Text = "Transferring";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RomUploadForm_FormClosed);
             this.ResumeLayout(false);
 
         }
