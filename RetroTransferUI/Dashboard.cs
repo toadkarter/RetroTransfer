@@ -178,6 +178,11 @@ namespace RetroTransferUI
         /// <param name="e"></param>
         private void SaveAndReturnButton_Click(object sender, EventArgs e)
         {
+            if (!FormIsValid())
+            {
+                MessageBox.Show("Sorry, the fields cannot be blank. Please complete entire form.", "Error");
+                return;
+            }
             SetRaspberryPiFromFields();
             romDisplayContainer.Controls.Clear();
             romDisplayContainer.Controls.Add(dropRomsLabel);
@@ -292,6 +297,14 @@ namespace RetroTransferUI
             retropieDirectoryField.Text = _raspberryPi.RetroPieDirectory;
         }
 
+        /// <summary>
+        /// Returns value confirming whether or not the form has valid inputs.
+        /// </summary>
+        /// <returns></returns>
+        public bool FormIsValid()
+        {
+            return ipAddressField.Text != "" && usernameField.Text != "" && passwordField.Text != "" && retropieDirectoryField.Text != "";
+        }
 
     }
 }
