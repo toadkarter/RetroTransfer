@@ -31,7 +31,7 @@ You can delete all settings related to your Raspberry Pi simply by deleting the 
 
 ### **I have already saved down details of my Raspberry Pi, but now I want to change things. How do I do this?**
 
-To change any detials relating to your Raspberry Pi, navigate back to the configuration tab, update the details, and press "Save and Return". The new details will be saved down to the configuration file once the program exits.
+To change any details relating to your Raspberry Pi, navigate back to the configuration tab, update the details, and press "Save and Return". The new details will be saved down to the configuration file once the program exits.
 
 ### **OK, the configuration is complete. How do I start adding ROMs that I want to send?**
 
@@ -70,6 +70,6 @@ One point to note, however, is that RetroPie doesn't seem to refresh the list of
 
 ### **How technologies does RetroTransfer use?**
 
-RetroTransfer was built with C# using the WinForms and MaterialSkin libraries for the UI, and the SSH.NET library for carrying out the SCP connection.
+RetroTransfer was built with C# using the WinForms and MaterialSkin libraries for the UI, and the SSH.NET library for carrying out the SCP connection. Multithreading is utilised during costly operations such as file uploads to ensure that the UI does not hang while the process is taking place.
 
 **END**
