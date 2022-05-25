@@ -6,6 +6,8 @@
 ---
 RetroTransfer is a utility for Windows that helps transfer ROM files from a user's computer to their Raspberry Pi's RetroPie installation directory. This process is carried out via SCP connection.
 
+*Note: I do not condone piracy. Please ensure that you legally own the games that you are transferring using this utility.* 
+
 ## **What do I need to use RetroTransfer?**
 ---
 * A Raspberry Pi connected to the same network as your machine from which you will be running RetroTransfer;
